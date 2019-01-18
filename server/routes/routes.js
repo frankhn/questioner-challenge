@@ -9,5 +9,4 @@ routers.post('/meetups/:meetupId/rsvp', meetupControllers.rsvp);//cool
 routers.get('/meetups/:meetupId', meetupControllers.getsingleMeetup);
 routers.delete('/meetups/:meetupId', meetupControllers.deleteMeetup);
 
-
 module.exports = routers;
