@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/style.css" media="all">
+<link rel="stylesheet" href="../css/profile.css" media="all">
+</head>
+<body> 
+<div class="topnav">
+<ul class="topmenu">
+  <li id="appname"><a href="index.html" id="appname">Questioner</a></li>
+  <li><a href="#"  class="button" id="sign">logout</a></li>
+</ul>
+</div>
+<div class="container">
+  <div class="user-welcome">
+<h2>Welcome Frank</h2>
+</div>
+<div class="profilecontent">
+<ul class="tabview">
+  <li><a href="javascript: void feed()" id="feed-tab" class="active" >Feed</a></li>
+  <li><a href="javascript: void quest()" id="question-tab" class="" >Questions</a></li>
+  <li><a href="javascript: void comm()" id="Comment-tab" class=""> Comments</a></li>
+</ul>
+
+<div class="topquestion" id="topquestion">
+  <h4 id="tabtitle">Feed <span> </span> -My Scheduled Meetups</h4>
+  <div class="meetupgird">
+      <div class="card">
+        <div class="meetup-content">
+<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house</p>
+  <h5 class="time">15:00 P:M</h5>
+  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="meetup-content">
+<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house</p>
+  <h5 class="time">15:00 P:M</h5>
+  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="meetup-content">
+<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house</p>
+  <h5 class="time">15:00 P:M</h5>
+  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="meetup-content">
+<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house</p>
+  <h5 class="time">15:00 P:M</h5>
+  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+        </div>
+      </div>
+</div>
+
+<!--questions that have been previously asked by user -->
+
+</div>
+<div class="questions" id="questions">
+  <h4 id="tabtitle"> You asked 3 Questions Recently</h4>
+    <div class="questions-container">
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+<div class="center-pagination">
+  <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+  </div>
+</div>
+
+    </div>
+  </div>
+<div class="lastcomments" id="lastcomments">
+  <p id="tabtitle">You have 3 Comments Record</p>
+  <div class="questions-container">
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+      <div class="question-view">
+        <h3 id="q-topic">Sunday Bible Study </h3>
+        <p id="qdate">21 january 2018</p>
+        <form id="form-question" method="" action="">
+          <textarea  cols="30" id="q-input" type="text" name="question" placeholder="was the meet up venue changed?" disabled="true"></textarea>
+        </form>
+        <button id="q-buttons-save" onclick="openSave()" type="submit">Save</button>
+        <button id="q-buttons" onclick="openEdit()" type="button">Edit</button>
+      </div>
+<div class="center-pagination">
+  <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+  </div>
+</div>
+
+    </div>
+</div>
+</div>
+</div>
+<div class="footer"> 
+  <div class="col-left">
+    <p id="footer-titles">Company</p>
+    <ul class="footerli">
+      <li>about us</li>
+      <li>Company</li>
+    </ul>
+  </div>
+  <div class="col-center">
+  <p id="footer-titles">Subscribe For Our Meetups</p>
+ <form action="" method="">
+  <input id="input" type="email" placeholder="Email" name="email">
+  <button type="submit" id="subscribe" >subscribe</button>
+</form>
+
+  </div>   
+  <div class="col-right">
+    <p id="footer-titles">Connect With Us</p>
+</div>
+
+</div>
+
+<script type="text/javascript" src="../js/profile.js"></script>
+</body>
+</html>

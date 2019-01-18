@@ -1,0 +1,181 @@
+.tabview{
+    padding: 15px 0;
+    border-bottom: 2px solid #eee;
+    }
+    .tabview li a.active {
+        padding-bottom: 15px;
+      border-bottom: 3px solid #53A831;
+    }
+    .tabview li {
+        display: inline;
+        list-style-type: none;
+      padding-right: 25px;
+    }
+    .tabview li a{
+        font-size: 17px;
+        font-weight: bold;
+        color: #000;
+      text-decoration: none;
+    }
+    .user-welcome{
+        position: relative;
+        margin: 20px 0;
+    }
+    #tabtitle{
+        text-indent: 5px;
+        font-family: monospace;
+        font-weight: 900;
+        font-size: x-large;
+        text-align: left;
+        margin: 10px 0;
+    }
+    .questions-container{
+        margin: 0 20%;
+        text-align: left;
+        padding-top: 20px;
+    }
+    .question-view{
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        margin: 20px 0;
+    }
+    @media screen and (max-width: 750px){
+        .questions-container{
+        margin: 0 0;
+        text-align: left;
+        padding-top: 20px;
+    }
+    }
+    #q-topic{
+        padding-left: 5px;
+        font-weight: 400;
+    }
+    #qdate{
+        padding-left: 5px;
+        margin-bottom: 15px;
+        font-size: 12px;
+        color: gray;
+        font-weight: 100;
+    }
+    #form-question{
+        padding-left: 15px;
+        overflow: auto;
+    }
+    #q-input{
+        border: none;
+        font-size: 16px;
+        font-weight: 400;
+        resize: none;
+        color: #000;
+        background: transparent;
+    }
+    #q-buttons{
+        color: #000;
+        background: transparent;
+        border: none;
+        margin-left: 15px;
+    }
+    #q-buttons-save{
+        display: none;
+        color: #000;
+        background: transparent;
+        border: none;
+        margin-left: 15px;
+    }
+    .single-question{
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        background: #fff;
+    }
+    .presenta{
+      padding: 5% 5%;
+    }
+    .questions {
+      width: 100%;
+      padding: 20px 0;
+      display: none;
+    }
+    .lastcomments{
+      width: 100%;
+      padding: 20px 0;
+      display: none;
+    }
+    .topquestion{
+      padding: 20px 0;
+    }
+    .profilecontent{
+     /*border : 2px solid #eee;*/
+    
+    }
+    #user-question{
+        padding: 3px 2px;
+        font-size: larger;
+        font-family: monospace;
+    }
+    .meetup{
+        display:grid;
+        grid-template-columns: 100px 100px 100px;
+      grid-gap: 10px;
+      padding: 0 10px;
+      margin: 10px 0;
+        box-sizing: border-box;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+    #meetupimag{
+      width: 50%;
+      height: 180px;
+    }
+    #meetupname{
+      position: absolute;
+        background: transparent;
+    }
+    #meetuplink{
+        color: #000;
+    }
+    @media screen and (max-width: 776px) {
+        #meetupimag{
+          width: 100%;
+          height: 180px;
+        }
+    }
+    .dlt{
+        position: relative;
+        margin-top: -25px;
+    }
+    #dltb{
+        background-color: #53A831;
+        color: #fff;
+        border: 1px solid #53A831;
+        border-radius: 5px;
+    }
+    .creatmeetup{
+            width: 100%;
+    }
+    .createmeet{
+        height: inherit;
+        padding: 5%;
+        font-size: 20px;
+    }
+    .forminputgroup{
+        width: 85%;
+    }
+    .forminput{
+            width: auto;
+        border: none;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 5px;
+            padding: 5px;
+            background-color: #f1f1f1;
+            margin: 10px;
+    }
+    #formsubmit{
+        width: auto;
+        padding: 5px;
+        margin: 5px;
+        background-color: #53A831;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+    }
+    
