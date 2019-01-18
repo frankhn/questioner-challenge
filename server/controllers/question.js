@@ -93,6 +93,26 @@ downvote (req, res)  {
   }// end of downvote a question.
   
 
+  // upvote a specific question
+  upvote (req, res) {
+    const quest = validateQuestion(req.params.questionId);
+    if(!quest){
+    res.status(404).json({
+      status: 404,
+      message: `the question does not exist`,
+    });
+  } else {
+    //edit the upvote field
+    quest.upvote += 1;
+    res.status(200).json({
+      status: 200,
+      message: `you've successfully downvoted a question with id ${req.params.questionId}`,
+      data: quest
+    });
+  }
+  }// end of upvote a question.
+  
+
 
 
 }
