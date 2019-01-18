@@ -13,8 +13,6 @@ class meetupController {
   });
 }// end of get all meetups
 
-
-
 create(req, res) {
   const id = meetups.length + 1;
 
