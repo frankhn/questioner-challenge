@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/style.css" media="all">
+<link rel="stylesheet" href="./css/signin.css" media="all">
+</head>
+<body>
+<div class="topnav">
+<ul class="topmenu">
+	<li id="appname"><a href="index.html" id="appname">Questioner</a></li>
+</ul>
+</div>
+<div class="signinform" id="lform" >
+<center>  <h3>Login Here </h3></center>
+<form class="signform" method="POST" action="" autocomplete="off">
+  <div class="forminputgroup">
+	<input class="forminput" type="text" placeholder="Email" >
+</div>
+<div class="forminputgroup">
+	 <input class="forminput" type="password" placeholder="Password" >
+</div>
+<div class="forminputgroup">
+	<input id="formsubmit" type="submit" name="login" value="Login">
+</div>
+<div class="forminputgroup">
+	<a id="forgotpass" href="javascript: void reset()">Forgot Password</a><a id="createacc" href="javascript: void create()">Create Account</a>
+</div>
+</form>
+</div>
+<div class="signinform" id="rform" >
+<center>  <h3>Reset Password</h3></center>
+<form class="signform" method="POST" action="" autocomplete="off">
+  <div class="forminputgroup">
+	<input class="forminput" type="text" placeholder="Email" >
+</div>
+<div class="forminputgroup">
+	<input id="formsubmit" type="submit" name="reset" value="Reset Password">
+</div>
+<div class="forminputgroup">
+	<a id="loginacc" href="javascript: void login()">Login</a>
+</div>
+</form>
+</div>
+<div class="signinform"  id="crform">
+<center>  <h3>Create Account</h3></center>
+<form class="signform" method="POST" action="" autocomplete="off">
+	<div class="forminputgroup">
+	<input class="forminput" type="text" placeholder="First Name" >
+</div>
+<div class="forminputgroup">
+	<input class="forminput" type="text" placeholder="Last Name" >
+</div>
+	<div class="forminputgroup">
+	<input class="forminput" type="text" placeholder="Email" >
+</div>
+<div class="forminputgroup">
+	 <input class="forminput" type="password" placeholder="Password" >
+</div>
+<div class="forminputgroup">
+	<input id="formsubmit" type="submit" name="create account" value="Create Account">
+</div>
+<a id="loginacc" href="javascript: void login()">Login</a>
+<div class="forminputgroup">
+</div>
+</form>
+</div>
+<div class="footer"> 
+<div class="col-left">
+    <p id="footer-titles">Company</p>
+    <ul class="footerli">
+      <li>about us</li>
+      <li>Company</li>
+    </ul>
+  </div>
+  <div class="col-center">
+  <p id="footer-titles">Subscribe For Our Meetups</p>
+ <form action="" method="">
+  <input id="input" type="email" placeholder="Email" name="email">
+  <button type="submit" id="subscribe" >subscribe</button>
+</form>
+
+  </div>   
+  <div class="col-right">
+    <p id="footer-titles">Connect With Us</p>
+</div>
+</div>
+<script type="text/javascript" src="./js/signin.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+.signinform{
+    width: 30%;
+    padding: 10px 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 35%;
+    background-color: #f1f1f1;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.signform{
+height: inherit;
+padding: 5%;
+margin-top: 35px;
+font-size: 20px;
+}
+@media screen and (max-width: 840px){
+.signinform{
+    width: 100%;
+    margin:0 0;
+}
+.signform{
+height: inherit;
+padding: 5%;
+font-size: 20px;
+}
+}
+.forminputgroup{
+width: 85%;
+}
+.forminput{
+    width: 100%;
+border: none;
+height: 20px;
+line-height: 20px;
+border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+#forgotpass{
+    color: blue;
+    font-size: 14px;
+}
+#createacc{
+float: right;
+color: #000;
+font-size: 14px;
+margin-top: 5px;
+}
+#loginacc{
+color: #000;
+font-size: 14px;
+}
+#formsubmit{
+padding: 5px 10px;
+margin: 5px;
+background-color: #53A831;
+border: 1px solid #eee;
+border-radius: 5px;
+color: #fff;
+font-size: 16px;
+}
+@media screen and (max-width: 1302px){
+#formsubmit{
+width: auto;
+}
+}
+#crform{
+display: none;
+}
+#rform{
+display: none;
+}

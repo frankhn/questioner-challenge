@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/style.css" media="all">
+<link rel="stylesheet" href="./css/profile.css" media="all">
+</head>
+<body>
+<div class="topnav">
+<ul class="topmenu">
+  <li id="appname"><a id="appname" href="index.html">Questioner</a></li>
+  <li><a href="#" class="button"  id="sign">Log out</a></li>
+</ul>
+</div>
+
+<div class="container">
+  <div class="user-welcome">
+  <h2>Admin Panel ::Frank</h2>
+  </div>
+<div class="profilecontent">
+<ul class="tabview">
+  <li id=""><a href="javascript: void feed()" id="meetup-tab" class="active" >All Meetups</a></li>
+  <li><a href="javascript: void quest()" id="create-tab" class="" >Create Meetup</a></li>
+</ul>
+
+<div class="topquestion" id="topquestion">
+  <div class="meetupgird">
+
+
+      <div class="admin-card">
+        <div class="meetup-content">
+<img src="./images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house <span>15:00 P:M</span></p>
+  <div class="down-ad-buttons">
+    <div class="col-left-admin-buttons">
+      <button  id="adm-delete" >DELETE</button>
+    </div>
+    <div class="col-center-admin-buttons">
+      <button  id="adm-read"><a id="adm-read" href="singlemeetup.html">View</a></button>
+    </div>
+    <div class="col-right-admin-buttons">
+      <button  id="adm-edit">Edit</button>
+    </div>
+       </div> </div>
+      </div>
+
+
+      <div class="admin-card">
+        <div class="meetup-content">
+<img src="./images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+  <h4 class="meetup-name">Sunday Bible study</h4>
+  <h5 class="date">20 january 2019</h5>
+  <p class="location">telecom house <span>15:00 P:M</span></p>
+  <div class="down-ad-buttons">
+    <div  class="col-left-admin-buttons">
+       <button id="adm-delete" >DELETE</button>
+    </div>
+    <div class="col-center-admin-buttons" >
+      <button id="adm-read">View</button>
+    </div>
+    <div class="col-right-admin-buttons">
+      <button  id="adm-edit">Edit</button>
+    </div>
+  
+       </div> </div>
+      </div>
+  </div>
+
+<div class="center-pagination">
+  <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+  </div>
+</div>
+
+
+
+
+</div>
+<div class="questions" id="questions">
+  <center>  <h3>Create Meet Up</h3></center>
+  <div class="create-meetup-form">
+  <form class="createmeet" method="POST" action="" >
+    <div class="forminputgroup">
+    <label>Meetup Name: </label>
+    <input class="forminput-admin" type="text" name="meetup" placeholder="Meet up name" >
+  </div>
+    <div class="forminputgroup">
+  <label>Date Scheduled: </label>
+    <input class="forminput-admin" type="date" name="date" placeholder="Meet up date" >
+    </div>
+    <div class="forminputgroup">
+    <label>Starting Time: </label>
+      <input class="forminput-admin" type="time" name="time" placeholder="Meet up time" >
+  </div>
+  <label>Meetup Venue: </label>
+  <div class="forminputgroup">
+    <input class="forminput-admin" type="text" placeholder="Meet up venue" >
+  </div>
+  <label>Description: </label>
+    <div class="forminputgroup">
+    <textarea  id="create-textarea" type="text" >some description on the meetup</textarea>
+    </div>
+    <label>Images: </label>
+      <div class="forminputgroup">
+     <input class="forminput-admin" multiple type="file" placeholder="image" accept="image/*" >
+  </div>
+  <div class="forminputgroup">
+    <input id="formsubmit" type="submit" name="createMeetUp" value="Create Meet Up">
+  </div>
+</form>
+  </div>
+</div>
+</div>
+</div>
+<div class="footer"> 
+  <div class="col-left">
+    <p id="footer-titles">Company</p>
+    <ul class="footerli">
+      <li>about us</li>
+      <li>Company</li>
+    </ul>
+  </div>
+  <div class="col-center">
+  <p id="footer-titles">Subscribe For Our Meetups</p>
+ <form action="" method="">
+  <input id="input" type="email" placeholder="Email" name="email">
+  <button type="submit" id="subscribe" >subscribe</button>
+</form>
+
+  </div>   
+  <div class="col-right">
+    <p id="footer-titles">Connect With Us</p>
+</div>
+</div>
+<script type="text/javascript" src="./js/admin.js"></script>
+</body>
+</html>

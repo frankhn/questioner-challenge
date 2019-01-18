@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/style.css" media="all">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+<div class="topnav">
+<ul class="topmenu">
+	<li id="appname"><a id="appname" href="index.html">Questioner</a></li>
+	<li><a href="signin.html" class="button"  id="sign">sign in</a></li>
+</ul>
+</div>
+
+<div class="container" id="singlemeetupcont">
+<div class="col-left" id="singlemeetupleft">
+<img src="./images/meetup.jpg" id="singmeetuppimg">
+</div>
+<div class="col-center">
+	<p id="venue">Sunday bible study Meet Up</p>
+	<p id="venue"> Venue : Telcom House</p>
+	<p id="venue"> Date: 20 January 2018 </p>
+	<p id="venue"> Time : 05:00 P:M </p>
+	<p id="venue"> Participants : 15 scheduled</p>
+	<form>
+		<button id="rsvp" type="submit">RSVP</button>
+	</form></a>
+</div>
+<div class="col-right" id="singlemeetupcentercol">
+	<div class="images-gird">
+		<div class="thumbnail-grid">
+			<img id="thumb-image" src="./images/meetupp.jpg" alt="">
+		</div>
+		<div class="thumbnail-grid">
+			<img id="thumb-image" src="./images/meetups.jpg" alt="">
+		</div>
+		<div class="thumbnail-grid">
+			<img id="thumb-image" src="./images/meetups.jpg" alt="">
+		</div>
+		<div class="thumbnail-grid">
+			<img id="thumb-image" src="./images/meetupp.jpg" alt="">
+		</div>
+		<div class="thumbnail-grid">
+			<img id="thumb-image" src="./images/meetupp.jpg" alt="">
+		</div>
+	</div>
+</div>
+</div>	
+<div class="container">
+<div class="meetupsingldescr">
+	<div class="tag-container">
+		<p class="tag" id="tagcontent">tag name</p>
+		<p class="tag" id="tagcontent">tag name</p>
+		<p class="tag" id="tagcontent">tag name</p>
+		<p class="tag" id="tagcontent">tag name</p>
+		<p class="tag" id="tagcontent">tag name</p>
+	</div>
+<!--<p>Some text about the MeetUp.  Did You know You can Comment on the meetups and create Questions as well.</p>-->
+<div class="postqform">
+		<form method="" action="">
+			<input type="text" class="postforminput" name="qst" placeholder="Ask A Question">
+			<input type="submit" name="ask" id="postformsubmit" value="Ask Question">
+		</form>
+	</div>
+	<div class="meetupquestionssinglep">
+		<h5 id=""><u>Questions</u></h5>
+<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
+	<button  id="upvote" onclick="upvote()"><span id="numberupvote"> </span><span><i class="far fa-thumbs-up"></i></span></button>
+	<button id="downvote" onclick="downvote()"><span id="numberdownvote"> </span><span><i class="far fa-thumbs-down"></i></span></button>
+	<button id="comment" onclick="opencomment()"><i class="far fa-comments"></i></button>
+<div class="commentfield" id="commentfield">
+	<form method="" action="">
+			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
+			<input type="submit" name="post" id="postformsubmit" value="Post">
+	</form>
+	<button  id="comment" onclick="closecomment()"><i class="far fa-times-circle"></i></button>
+	<button  id="allcomment" onclick="allcomments()"><i class="far fa-comments"></i></button>
+</div>
+<div class="dallcomments" id="dallcomments">
+	<div>
+		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
+	</div>
+	<div>
+		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
+	</div>
+</div>
+</div>
+
+
+
+<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
+	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span><i class="far fa-thumbs-up"></i></span></button>
+	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span><i class="far fa-thumbs-down"></i></span></button>
+	<button  id="comment" onclick="opencomment()"><i class="far fa-comments"></i></button>
+<div class="commentfield" id="commentfield">
+	<form method="" action="">
+			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
+			<input type="submit" name="post" id="postformsubmit" value="Post">
+	</form>
+	<button  id="comment" onclick="closecomment()"><i class="far fa-times-circle"></i></button>
+	<button  id="allcomment" onclick="allcomments()"><i class="far fa-comments"></i></button>
+</div>
+<div class="dallcomments" id="dallcomments">
+	<div>
+		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
+	</div>
+	<div>
+		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
+	</div>
+</div>
+</div>
+
+
+
+
+
+<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
+	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span><i class="far fa-thumbs-up"></i></span></button>
+	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span><i class="far fa-thumbs-down"></i></span></button>
+	<button  id="comment" onclick="opencomment()"><i class="far fa-comments"></i></button>
+<div class="commentfield" id="commentfield">
+	<form method="" action="">
+			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
+			<input type="submit" name="post" id="postformsubmit" value="Post">
+	</form>
+	<button  id="comment" onclick="closecomment()"><i class="far fa-times-circle"></i></button>
+	<button  id="allcomment" onclick="allcomments()"><i class="far fa-comments"></i></button>
+</div>
+<div class="dallcomments" id="dallcomments">
+	<div>
+		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
+	</div>
+	<div>
+		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
+	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span><i class="far fa-thumbs-up"></i></span></button>
+	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span><i class="far fa-thumbs-down"></i></span></button>
+	<button  id="comment" onclick="opencomment()"><i class="far fa-comments"></i></button>
+<div class="commentfield" id="commentfield">
+	<form method="" action="">
+			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
+			<input type="submit" name="post" id="postformsubmit" value="Post">
+	</form>
+	<button  id="comment" onclick="closecomment()"><i class="far fa-times-circle"></i></button>
+	<button  id="allcomment" onclick="allcomments()"><i class="far fa-comments"></i></button>
+</div>
+<div class="dallcomments" id="dallcomments">
+	<div>
+		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
+	</div>
+	<div>
+		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
+	</div>
+</div>
+</div>
+
+
+ <div class="center-pagination">
+  <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+  </div>
+</div>
+
+	</div>
+</div>
+<div>
+<p id="meetup-descr"> Some descriptions about the meetup</p>
+</div>
+</div>
+</div>
+<div class="footer"> 
+  <div class="col-left">
+    <p id="footer-titles">Company</p>
+    <ul class="footerli">
+      <li>about us</li>
+      <li>Company</li>
+    </ul>
+  </div>
+  <div class="col-center">
+  <p id="footer-titles">Subscribe For Our Meetups</p>
+ <form action="" method="">
+  <input id="input" type="email" placeholder="Email" name="email">
+  <button type="submit" id="subscribe" >subscribe</button>
+</form>
+
+  </div>   
+  <div class="col-right">
+    <p id="footer-titles">Connect With Us</p>
+</div>
+</div>
+<script type="text/javascript" src="./js/singlemeetup.js"></script>
+</body>
+</html>
