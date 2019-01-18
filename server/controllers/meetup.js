@@ -78,6 +78,19 @@ rsvp(req, res) {
 }
 }//end of rsvp for a meetup
 
+// Get a specific meetup record.
+getsingleMeetup(req, res) {
+  const findmeetup = confirmMeetup(req.params.meetupId);
+  if (findmeetup) {
+    res.status(200).json({ status: 200, data: findmeetup });
+  } else {
+    res.status(404).json({
+      status: 404,
+      data: `no such meetup found with ID ${req.params.meetupId}`,
+    });
+  }
+}// end of Get a specific meetup record.
+
 
 }
 const meetupControllers = new meetupController();
