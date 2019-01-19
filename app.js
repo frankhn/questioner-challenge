@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use('/api/v1', meetup);
 
 app.get('/', (req, res) => {
-  res.sendFile('./server/index.html', { root: __dirname });// for use on heroku
+  res.sendFile('./server/index.html', { root: __dirname });// for use on heroku as a homepage
 });
 
 app.use((req, res, next) => {

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+	table{
+		border: 2px solid #000;
+	}
+	tr{
+		 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 4);
+	}
+	td,th{
+		padding: 1em;
+		border: 2px solid #eee;
+	}
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<h3>Welcome To questioner</h3>
+		<p>this is just an API endpoint app to return some default json data<br>
+		feel free to navigate through one of the following links bellow</p>
+		<h3>Here is Some of them</h3>
+		<div>
+			<table bgcolor="#eee">
+				<tr>
+					<th>title</th>
+					<th>link</th>
+					<th>description</th>
+				</tr>
+				<tr>
+					<td> Get all Meetups</td>
+					<td><a href="https://questioner-challenge.herokuapp.com/api/v1/meetups">Get All Meetups</a></td>
+					<td>this returns a json of all meetups</td>
+				</tr>
+				<tr>
+					<td>Get single Meetup</td>
+					<td><a href="https://questioner-challenge.herokuapp.com/api/v1/meetups/2">Get meetup </a>(eg: with Id=2)</td>
+					<td>this returns a json of specific meetup</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</body>
+</html>
