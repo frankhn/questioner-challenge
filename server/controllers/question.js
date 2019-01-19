@@ -113,6 +113,13 @@ downvote (req, res)  {
   }// end of upvote a question.
   
 
+//get all comments for a question
+getComments (req, res) {
+  res.status(200).json({
+    status: 200
+  });
+}
+
 
 
 }
