@@ -279,10 +279,22 @@ border: none;
 .commentfield{
 	display: none;
 }
+#facebook{
+  color: #414cc1;
+}
+#twitter{
+	color: #0e9ef7;
+}
+#instagram{
+	color: #e51286
+}
+#google{
+	color: red;
+}
 .dallcomments{
 	display: none;
-	padding: 5px 10px;
-	background: gray;
+	padding: 5px 10px 5px 25px;
+	background: #fff;
 }
 #schedule{
 	padding: 0 10px;
