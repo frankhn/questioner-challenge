@@ -1,7 +1,7 @@
 {
     "name": "questioner",
     "version": "1.0.0",
-    "description": "questioner api endpoints ",
+    "description": "questioner api endpoints",
     "main": "app.js",
     "scripts": {
         "start": "babel-node server.js",
