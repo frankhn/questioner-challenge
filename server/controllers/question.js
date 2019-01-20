@@ -4,13 +4,13 @@ const Joi = BaseJoi.extend(Extension);
 const confirmMeetup = require('../middleware/validate');
 const questions = require('../models/question');
 const validateQuestion= require('../middleware/validateQuestions');
-
+const validater = require('../middleware/validations')
 
 class questionController{
     //get all questions that belong to a meetup
     getQuestions  (req, res){
     const findmeetup = confirmMeetup(req.params.meetupId);
-    if (!findmeetup) {
+    if (!findmeetup){
       res.status(404).json({
         status: 404,
         msg: "the meetup does not exist"
@@ -43,15 +43,7 @@ class questionController{
     } else { 
       const id = questions.length + 1;
       const today = new Date().toLocaleDateString();
-      const schema = Joi.object().keys({
-        id: Joi.number().default(id),
-        createdOn: Joi.date().default(today, 'time of creation'),
-        createdBy: Joi.number().default(id),
-        meetup: Joi.number().default(req.params.meetupId),
-        title: Joi.string().min(3).max(20).required(),
-        bodyy: Joi.string().min(10).max(50).required(),
-      });
-      Joi.validate(req.body, schema, (err, result) => {
+      Joi.validate(req.body, validater.questionSchema, validater.validationOptions, (err, result) => {
         if (!err) {
           questions.push(result);
           res.status(201).json({

@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
 import meetups from '../models/meetup';
 import confirmMeetup from '../middleware/validate';
+=======
+const BaseJoi = require('joi');
+const Extension = require('joi-date-extensions');
+const meetups = require('../models/meetup');
+const confirmMeetup = require('../middleware/validate');
+const validater = require('../middleware/validations')
+>>>>>>> 23886969c2478382cca5bcb833dfebac5fba97ee
 
 const Joi = BaseJoi.extend(Extension);
 
@@ -18,19 +26,8 @@ class meetupController {
 
 create(req, res) {
   const id = meetups.length + 1;
-
   const today = new Date().toLocaleDateString();
-
-  const schema = Joi.object().keys({
-    id: Joi.number().default(id),
-    createdOn: Joi.date().default(today, 'time of creation'),
-    location: Joi.string().min(3).max(20).required(),
-    images: Joi.string().required(),
-    topic: Joi.string().min(3).max(20).required(),
-    happeningOn: Joi.date().format(['YYYY/MM/DD', 'DD-MM-YYYY']).raw(),
-    tags: Joi.string().min(3).max(30).required(),
-  });
-  Joi.validate(req.body, schema, (err, result) => {
+  Joi.validate(req.body, validater.meetupSchema, validater.validationOptions, (err, result) => {
     if (!err) {
       meetups.push(result);
       res.status(201).json({

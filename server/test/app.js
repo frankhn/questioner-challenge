@@ -171,3 +171,30 @@ chai.use(chaiHttp);
       });
 
   });
+
+
+//should not allow any other request that is not {POST,PATCH,GET,DELETE}
+describe('/request a a lock request', () => {
+    it('it should a not found response', (done) => {
+        chai.request(server)
+              .lock(`/`)
+              .end((err, res) => {
+                    res.should.have.status(404);
+                done();
+              });
+        });
+    });
+
+
+    describe('/ the home page request', () => {
+        it('it should be able to reach the home page index.html', (done) => {
+            chai.request(server)
+                  .get(`/`)
+                  .end((err, res) => {
+                        res.should.have.status(200);
+                    done();
+                  });
+            });
+        });
+
+        
