@@ -1,5 +1,5 @@
-const BaseJoi = require('joi');
-const Extension = require('joi-date-extensions');
+import BaseJoi from 'joi';
+import Extension from 'joi-date-extensions';
 const Joi = BaseJoi.extend(Extension);
 
 const validater ={

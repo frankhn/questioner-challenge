@@ -1,10 +1,11 @@
-const BaseJoi = require('joi');
-const Extension = require('joi-date-extensions');
+import BaseJoi from 'joi';
+import Extension from 'joi-date-extensions';
+import confirmMeetup from '../middleware/validate';
+import questions from '../models/question';
+import validateQuestion from '../middleware/validateQuestions';
+import validater from '../middleware/validations';
+
 const Joi = BaseJoi.extend(Extension);
-const confirmMeetup = require('../middleware/validate');
-const questions = require('../models/question');
-const validateQuestion= require('../middleware/validateQuestions');
-const validater = require('../middleware/validations')
 
 class questionController{
     //get all questions that belong to a meetup
