@@ -1,13 +1,13 @@
 process.env.NODE_ENV = 'test';
-let meetups  = require('../models/meetup');
+import meetups  from '../models/meetup';
 
-let  questions = require('../models/question');
+import  questions from '../models/question';
 
 //Require the dev-dependencies
-let chai = require('chai');
-let server = require('../../app');
+import chai from 'chai';
+import server from '../../app';
 let should = chai.should();
-let chaiHttp = require('chai-http');
+import chaiHttp from 'chai-http';
 
 
 
