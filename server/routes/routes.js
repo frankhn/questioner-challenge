@@ -1,6 +1,6 @@
-const express = require('express');
-const meetupControllers = require('../controllers/meetup') 
-const questionControllers = require('../controllers/question')
+import express from 'express';
+import meetupControllers from '../controllers/meetup' 
+import questionControllers from '../controllers/question'
 const routers = express.Router();
 
 

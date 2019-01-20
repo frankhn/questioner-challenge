@@ -4,8 +4,8 @@
     "description": "questioner api endpoints ",
     "main": "app.js",
     "scripts": {
-        "start": "node server.js",
-        "test": "nyc --reporter=html --reporter=text mocha ./server/test",
+        "start": "babel-node server.js",
+        "test": "nyc --reporter=html --reporter=text mocha --require babel-register ./server/test",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "showCoverage": "start coverage/lcov-report/index.html",
         "lint": "eslint app.js"
@@ -18,6 +18,10 @@
     "author": "frank harerimana",
     "license": "ISC",
     "dependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "babel-register": "^6.26.0",
         "body-parser": "^1.18.3",
         "chai-http": "^4.2.0",
         "express": "^4.16.4",

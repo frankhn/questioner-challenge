@@ -1,7 +1,7 @@
-const BaseJoi = require('joi');
-const Extension = require('joi-date-extensions');
-const meetups = require('../models/meetup');
-const confirmMeetup = require('../middleware/validate');
+import BaseJoi from 'joi';
+import Extension from 'joi-date-extensions';
+import meetups from '../models/meetup';
+import confirmMeetup from '../middleware/validate';
 
 const Joi = BaseJoi.extend(Extension);
 

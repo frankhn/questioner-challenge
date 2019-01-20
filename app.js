@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const morgan = require('morgan');// simplifying logging
+import morgan from 'morgan';// simplifying logging
 
-const bodyParser = require('body-parser'); // for extracting body portion
+import bodyParser from 'body-parser'; // for extracting body portion
 
 
-const meetup = require('./server/routes/routes');
+import meetup from './server/routes/routes';
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false })); // for only passing strings and arrays
@@ -33,14 +33,4 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.use((error, req, res) => {
-  res.status(error.status || 400);
-  // if it does not take the error status then status 400 Bad Request
-  res.json({
-    error: {
-      status: 404,
-      message: error.message,
-    },
-  });
-});
 module.exports = app;
