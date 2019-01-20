@@ -3,8 +3,6 @@ const app = express();
 import morgan from 'morgan';// simplifying logging
 
 import bodyParser from 'body-parser'; // for extracting body portion
-
-
 import meetup from './server/routes/routes';
 
 app.use(morgan('dev'));
