@@ -33,17 +33,4 @@ app.use((req, res, next) => {
   next(error);
 });
 
-<<<<<<< HEAD
-=======
-/*app.use((error, req, res) => {
-  res.status(error.status || 400);
-  // if it does not take the error status then status 400 Bad Request
-  res.json({
-    error: {
-      status: 404,
-      message: error.message,
-    },
-  });
-});*/
->>>>>>> 23886969c2478382cca5bcb833dfebac5fba97ee
 module.exports = app;
