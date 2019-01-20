@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use('/api/v1', meetup);
 
 app.get('/', (req, res) => {
-  res.sendFile('./server/index.html', { root: __dirname });// for use on heroku as a homepage
+  res.status(200).sendFile('./server/index.html', { root: __dirname });// for use on heroku as a homepage
 });
 
 app.use((req, res, next) => {
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.use((error, req, res) => {
+/*app.use((error, req, res) => {
   res.status(error.status || 400);
   // if it does not take the error status then status 400 Bad Request
   res.json({
@@ -42,5 +42,5 @@ app.use((error, req, res) => {
       message: error.message,
     },
   });
-});
+});*/
 module.exports = app;
