@@ -44,11 +44,15 @@ Whether your using ***POSTMAN*** as a testing environment or your on a browser o
 
 The Application uses the following URL mapping for accessing it's core functions 
 
-GET :   ?/api/v1/meetups: retrieves all the meetups available in the database
-POST:  ?/api/v1/meetups: inserting a new record of a meetup
-GET :  ?/api/v1/meetups/:id :returns a specific meetup
-GET :  ?/api/v1/meetups/:meetupId/questions : returns questions that belong to a meetup
-POST:  ?/api/v1/meetups/:meetupId/questions : create a question record 
+***GET :   ?/api/v1/meetups: retrieves all the meetups available in the database
+
+**POST:  ?/api/v1/meetups: inserting a new record of a meetup
+
+***GET :  ?/api/v1/meetups/:id :returns a specific meetup
+
+***GET :  ?/api/v1/meetups/:meetupId/questions : returns questions that belong to a meetup
+
+***POST:  ?/api/v1/meetups/:meetupId/questions : create a question record 
 
 
 
@@ -58,6 +62,8 @@ POST:  ?/api/v1/meetups/:meetupId/questions : create a question record
 
 
 For testing You have to run 
+
+
 ***npm test***
 
 
