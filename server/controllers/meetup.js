@@ -19,7 +19,7 @@ class meetupController {
  async allMeetup(req, res) {
   Database.executeQuery("SELECT * FROM meetup_table")
     .then(meetups=>{
-     return res.status(201).json({
+     return res.status(200).json({
        msg: "cool",
        total:meetups.rowCount,meetups:meetups.rows
       });
@@ -85,8 +85,8 @@ rsvp(req, res) {
         db.query(`INSERT INTO rsvp_table(user_id,meetup_id)
         VALUES('1','${req.params.meetupId}')returning *;`)
          .then (rsvp => {
-             return res.status(202).send({
-                 "status": 202,
+             return res.status(201).send({
+                 "status": 201,
                  "success": "thanks for response",
  });
  }).catch( error => {
