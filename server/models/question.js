@@ -1,5 +1,21 @@
 
-//array to hold questions
+// class Question{
+// 	constructor(){
+// 		this.id = id;
+// 		this.createdOn = createdOn;
+// 		this.createdBy = createdBy;
+// 		this.meetupId = meetup_id;
+// 		this.title = title;
+// 		this.bodyy = bodyy;
+// 		this.upvote = upvote;
+// 		this.downvote = downvote
+// 	}
+
+// }
+// module.exports = new Question();
+
+
+// //array to hold questions
 const questions = [
 	{
 		id: 1, 
