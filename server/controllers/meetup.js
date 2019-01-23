@@ -37,11 +37,13 @@ class meetupController {
 
 async create(req, res) {
       const result = db.query(`INSERT INTO meetup_table(location,topic,happening_on,image_name)
-      VALUES('${req.body.location}','${req.body.topic}','${req.body.happening_on}','${req.body.image_name}')returning *;`);
-      res.status(201).json({
-        status: 201,
-        msg: 'you successfully created a Meetup',
-        object: result,
+      VALUES('${req.body.location}','${req.body.topic}','${req.body.happening_on}','${req.body.image_name}') returning *;`)
+      .then(meetup =>{
+        res.status(201).json({
+          status: 201,
+          msg: 'you successfully created a Meetup',
+          object: meetup.rows
+      })
       });
 }
 /**

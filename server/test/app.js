@@ -157,7 +157,7 @@ chai.use(chaiHttp);
 
    describe('/Delete a meetup', () => {
       it('it should be able to delete a meetup', (done) => {
-        let meetupId= 28;
+        let meetupId= 27;
           chai.request(server)
                 .delete(`/api/v1/meetups/${meetupId}`)
                 .end((err, res) => {
