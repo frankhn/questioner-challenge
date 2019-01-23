@@ -2,12 +2,15 @@ import express from 'express';
 const app = express();
 import morgan from 'morgan';// simplifying logging
 
+const port = process.env.PORT || 3000;
+
 import bodyParser from 'body-parser'; // for extracting body portion
 import meetup from './server/routes/routes';
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false })); // for only passing strings and arrays
 app.use(bodyParser.json());
+
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -30,5 +33,10 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
+
+app.listen(port, () =>{
+  console.log('server started');
+})
+
 
 module.exports = app;

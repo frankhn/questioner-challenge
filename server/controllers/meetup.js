@@ -1,87 +1,121 @@
+import uuid from 'uuid';
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
 import meetups from '../models/meetup';
-import confirmMeetup from '../middleware/validate';
-import validater from '../middleware/validations'
-
+import confirmMeetup from '../middleware/validations';
+import validater from '../middleware/validations';
+import Database from '../models/connect';
+import MeetupQuery from '../middleware/query';
+import db from "../config/connection";
 const Joi = BaseJoi.extend(Extension);
 
 class meetupController {
-  // get all meetups
-  allMeetup(req, res) {
-  res.status(200).json({
-    status: 200,
-    data: meetups,
-  });
-}// end of get all meetups
+ 
+/**
+ * @param {get the meetup from the db} req 
+ * @param {*return data if available} res 
+ */
 
+ async allMeetup(req, res) {
+  Database.executeQuery("SELECT * FROM meetup_table")
+    .then(meetups=>{
+     return res.status(200).json({
+       msg: "cool",
+       total:meetups.rowCount,meetups:meetups.rows
+      });
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+}
 
+/**
+ * 
+ * @param {create a meetup} req 
+ * @param {*returns success if created} res 
+ */
 
-create(req, res) {
-  const id = meetups.length + 1;
-  const today = new Date().toLocaleDateString();
-  Joi.validate(req.body, validater.meetupSchema, validater.validationOptions, (err, result) => {
-    if (!err) {
-      meetups.push(result);
+async create(req, res) {
+      const result = db.query(`INSERT INTO meetup_table(location,topic,happening_on,image_name)
+      VALUES('${req.body.location}','${req.body.topic}','${req.body.happening_on}','${req.body.image_name}')returning *;`);
       res.status(201).json({
         status: 201,
         msg: 'you successfully created a Meetup',
         object: result,
       });
-    } else {
-      res.status(404).json({
-        status: 404,
-        msg: 'invalid inputs:please make sure you insert valid data',
-      });
-    }
-  });
-}// end of create a meetup
+}
+/**
+ * 
+ * @param {*the id for a meetup to be deleted} req 
+ * @param {*true if meetup exits and deletes the meetup} res 
+ */
 
-
-// delete a meetup record
 deleteMeetup(req, res) {
-  const findmeetup = confirmMeetup(req.params.meetupId);
-  const meetupId = req.params.meetupId;
-  if (findmeetup) {
-    const filteredMeetups = meetups.filter(meetup => meetup !== meetups.indexOf);
-    res.status(202).json({
-      status: 202,
-      msg: 'resource accepted and marked for deletion',
-      data: filteredMeetups
-    });
-  } else { res.status(404).json({ status: 404, msg: 'meetup not found' }); }
-}// end of delete a meetup // object accepted for deletion 202
+  const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
+    confirm.then((question)=>{
+      if(question.rows === undefined || question.rows.length == 0){
+        return res.status(404).json({msg: "meetup not found"});
+      } else{
+        db.query(`DELETE FROM meetup_table where id = ${req.params.meetupId}returning *;`)
+         .then (deletedMeetup => {
+             return res.status(202).send({
+                 "status": 202,
+                 "success": "received and marked for deletion",
+ });
+ }).catch( error => {
+   res.status(500).json({
+       msg: "an error has occured"
+   })
+ })
+ }
+})  
+}
 
-
-// Respond to meetup RSVP
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 rsvp(req, res) {
-	const findmeetup = confirmMeetup(req.params.meetupId);
-	if (findmeetup) {
-		res.status(200).json({
-    status: 200,
-    message: `thanks for responding to the meetup ${req.params.meetupId}`,
-  });
-} else {
-	res.status(404).json({
-		message: 'the meetup your trying to respond to does not exist'
-	});
+	const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
+    confirm.then((question)=>{
+      if(question.rows === undefined || question.rows.length == 0){
+        return res.status(404).json({msg: "meetup not found"});
+      } else{
+        db.query(`INSERT INTO rsvp_table(user_id,meetup_id)
+        VALUES('1','${req.params.meetupId}')returning *;`)
+         .then (rsvp => {
+             return res.status(201).send({
+                 "status": 201,
+                 "success": "thanks for response",
+ });
+ }).catch( error => {
+   res.status(501).json({
+       msg: "server error has occured "
+   })
+ })
+ }
+})
 }
-}//end of rsvp for a meetup
 
-// Get a specific meetup record.
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 getsingleMeetup(req, res) {
-  const findmeetup = confirmMeetup(req.params.meetupId);
-  if (findmeetup) {
-    res.status(200).json({ status: 200, data: findmeetup });
-  } else {
-    res.status(404).json({
-      status: 404,
-      data: `no such meetup found with ID ${req.params.meetupId}`,
-    });
-  }
-}// end of Get a specific meetup record.
-
-
+  const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
+    confirm.then((meetup)=>{
+      if(meetup.rows === undefined || meetup.rows.length == 0){
+        return res.status(404).json({msg: "meetup not found"});
+      } else{
+        res.status(200).json({
+          total:meetup.rowCount,meetup:meetup.rows
+        })
 }
+})
+}
+}
+
 const meetupControllers = new meetupController();
 module.exports = meetupControllers;
