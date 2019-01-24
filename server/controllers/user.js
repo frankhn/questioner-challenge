@@ -19,14 +19,28 @@ class meetupController {
 async login(req, res) {
     const email =req.body.email;
     const password =req.body.password;
-    db.query('SELECT email FROM user_table WHERE email = $1', [email])
+    db.query('SELECT * FROM user_table WHERE email = $1', [email])
     .then((user) =>{
       if(user.rows === undefined || user.rows.length == 0){
         return res.status(404).json({msg: "invalid credentials"});
       } else{
-       res.status(200).json({
-         msg: 'your done'
-       })
+        //console.log(user.rows[0].password)
+        const pass =bcrypt.compareSync(password, user.rows[0].password);
+        if(pass){
+          jwt.sign({user:user.rows[0]},'secretkey', (error, token) =>{
+            res.status(200).json({
+              status: 200,
+              data: user.rows[0],
+              token: token
+            })
+          })
+        } else{
+          res.status(404).json({
+            status: 404,
+            msg: "invalid credential"
+          })
+        }
+       
 }
     })
      
