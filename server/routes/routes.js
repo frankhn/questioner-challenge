@@ -9,8 +9,8 @@ routers.get('/meetups', meetupControllers.allMeetup);//cool
 routers.post('/meetups', meetupControllers.create);//cool
 routers.post('/meetups/:meetupId/rsvp', meetupControllers.rsvp);//cool
 
-routers.post('/users/auth', userControllers.login);
-routers.post('/users/register', userControllers.register);
+routers.post('/auth/login', userControllers.login);
+routers.post('/auth/signup', userControllers.register);
 
 routers.get('/meetups/:meetupId/questions', questionControllers.getQuestions);
 routers.post('/meetups/:meetupId/questions', questionControllers.create);//cool
