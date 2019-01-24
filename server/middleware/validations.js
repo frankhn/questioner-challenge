@@ -31,22 +31,21 @@ const confirmQuestion    = (questionId) =>{
 /**
  * mapping the meetup 
  */
-const validation ={
-  meetupSchema: Joi.object().keys({
+  const meetupSchema= Joi.object({
     location: Joi.string().min(3).max(20).required(),
     image_name: Joi.string().required(),
     topic: Joi.string().min(3).max(20).required(),
     happeningOn: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
-  }),
-  questionSchema: Joi.object().keys({
+  })
+ const  questionSchema= Joi.object({
       title: Joi.string().min(5).max(15),
       bodyy: Joi.string().min(5).max(30),
-  }),
-  loginSchema: Joi.object().keys({
+  })
+ const loginSchema= {
       email: Joi.string().email().required(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
-  }),
-  signupSchema: Joi.object().keys({
+  };
+ const signupSchema= Joi.object({
       firstname: Joi.string(),
       lastname: Joi.string(),
       othername: Joi.string(),
@@ -54,22 +53,27 @@ const validation ={
       phone_number: Joi.number().integer(),
       username: Joi.string().min(5).max(12),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-  }),
-  subscribeSchema: Joi.object().keys({
+  })
+  const subscribeSchema= Joi.object({
       email: Joi.string().email().required(),
-  }),
-  commmentSchema: Joi.object().keys({
+  })
+  const commmentSchema= Joi.object({
       content: Joi.string().min(6).max(20).required(),
-  }),
-  validationOptions: {
+  })
+const  validationOptions= {
       abortEarly: false,
       allowUnknown: true,
       stripUnknown: true,
-  },
-}
+  }
 
 module.exports = {
-    validation,
+    questionSchema,
+    meetupSchema,
+    loginSchema,
+    signupSchema,
+    subscribeSchema,
+    commmentSchema,
     confirmMeetup,
+    validationOptions,
     confirmQuestion
 }

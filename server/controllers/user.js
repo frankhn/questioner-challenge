@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
-import validater from '../middleware/validations';
+import { signupSchema, loginSchema, validationOptions } from '../middleware/validations';
 import db from "../config/connection";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
@@ -17,7 +17,15 @@ class meetupController {
 
 
 async login(req, res) {
-    const email =req.body.email;
+  const { error } = Joi.validate(req.body, loginSchema);
+  if (error) {
+    const errorMessage = error.details.map(d => d.message);
+    return res.status(400).send({
+        status: 400,
+        error: errorMessage
+    });
+  }
+  const email =req.body.email;
     const password =req.body.password;
     db.query('SELECT * FROM user_table WHERE email = $1', [email])
     .then((user) =>{
@@ -52,15 +60,23 @@ async login(req, res) {
  * @param {*returns success if created} res 
  */
 async register(req, res) {
+  const { error } = Joi.validate(req.body, signupSchema, validationOptions);
+  if (error) {
+    const errorMessage = error.details.map(d => d.message);
+    return res.status(400).send({
+        status: 400,
+        error: errorMessage
+    });
+  }
   const hashedPassword = bcrypt.hashSync(req.body.password, 8);
        db.query(`INSERT INTO user_table(firstname,lastname,othername,email,phone_number,username,password)
        VALUES('${req.body.firstname}','${req.body.lastname}','${req.body.othername}','${req.body.email}','${req.body.phone_number}','${req.body.username}','${hashedPassword}')returning *;`)
         .then (newUser => {
-          jwt.sign({newUser:newUser.rows[0]},'secretkey', (error, token) =>{
+          jwt.sign({newUser:newUser.rows[0]},'secretkey', (error, token) =>{ 
             res.status(200).json({
               status: 200,
+              token: token,
               data: newUser.rows[0],
-              token: token
             })
           })
 }).catch( error => {
