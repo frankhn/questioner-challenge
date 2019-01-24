@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
-import meetups from '../models/meetup';
+import { meetupSchema, questionSchema, validationOptions } from '../middleware/validations';
 import confirmMeetup from '../middleware/validations';
 import validater from '../middleware/validations';
 import Database from '../models/connect';
@@ -36,6 +36,15 @@ class meetupController {
  */
 
 async create(req, res) {
+  const { error } = Joi.validate(req.body, meetupSchema, validationOptions);
+  if (error) {
+    const errorMessage = error.details.map(d => d.message);
+    return res.status(400).send({
+        status: 400,
+        error: errorMessage
+    });
+  }
+  console.log(req.body.happening_on)
       const result = db.query(`INSERT INTO meetup_table(location,topic,happening_on,image_name)
       VALUES('${req.body.location}','${req.body.topic}','${req.body.happening_on}','${req.body.image_name}') returning *;`)
       .then(meetup =>{

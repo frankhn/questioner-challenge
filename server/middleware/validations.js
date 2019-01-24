@@ -35,7 +35,7 @@ const confirmQuestion    = (questionId) =>{
     location: Joi.string().min(3).max(20).required(),
     image_name: Joi.string().required(),
     topic: Joi.string().min(3).max(20).required(),
-    happeningOn: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    happeningOn: Joi.date().format(['YYYY/MM/DD', 'DD-MM-YYYY']),
   })
  const  questionSchema= Joi.object({
       title: Joi.string().min(5).max(15),
