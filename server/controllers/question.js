@@ -20,22 +20,24 @@ class questionController{
       const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
       confirm.then((questions)=>{
         if(questions.rows === undefined || questions.rows.length == 0){
-          return res.status(404).json({msg: "meetup not found"});
+          return res.status(404).json({status: 404, message:"meetup not found"});
         } else{
-          db.query(`SELECT * FROM question_table where meetup_id =${req.params.meetupId}`)
+          console.log(questions.rows[0].id)
+          db.query(`SELECT * FROM question_table where meetup_id =${questions.rows[0].id}`)
            .then ((newUser) => {
             if(newUser.rows === undefined || newUser.rows.length == 0){
-              return res.status(200).json({msg: "this meetup has no questions yet!"});
+              console.log(questions.rows[0].id)
+              return res.status(404).json({status: 404, message: "this meetup has no questions yet!"});
             } else{
               return res.status(200).json({
-                total:newUser.rowCount,newUser:newUser.rows
+                data:newUser.rows
               });
               
             }
    }).catch( error => {
      console.log(error);
-     res.status(500).json({
-         msg: "an error has occured please make sure u insert valid contents"
+     res.status(400).json({
+         msg: "bad request"
      })
    })
    }
@@ -49,23 +51,26 @@ class questionController{
  */
 
   create (req, res) {
+    
     const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((question)=>{
       if(question.rows === undefined || question.rows.length == 0){
-        return res.status(404).json({msg: "meetup not found"});
+        return res.status(404).json({status: 404 ,message: "meetup not found"});
       } else{
+        console.log(question.rows[0].id)
         db.query(`INSERT INTO question_table(created_by,meetup_id,title,body)
         VALUES('1','${req.params.meetupId}','${req.body.title}','${req.body.body}')returning *;`)
          .then (newUser => {
              console.log(newUser);
              return res.status(201).send({
                  "status": 201,
-                 "success": "you have successfully a question",
+                 data: newUser.rows[0],
  });
  }).catch( error => {
    console.log(error);
-   res.status(500).json({
-       msg: "an error has occured please make sure u insert valid contents"
+   res.status(400).json({
+       status: 400,
+       message: "bad request"
    })
  })
  }

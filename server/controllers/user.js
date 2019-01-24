@@ -30,9 +30,10 @@ async login(req, res) {
     db.query('SELECT * FROM user_table WHERE email = $1', [email])
     .then((user) =>{
       if(user.rows === undefined || user.rows.length == 0){
-        return res.status(404).json({msg: "invalid credentials"});
+        return res.status(404).json({
+          status: 404,
+          message: "email does not exist"});
       } else{
-        //console.log(user.rows[0].password)
         const pass =bcrypt.compareSync(password, user.rows[0].password);
         if(pass){
           jwt.sign({user:user.rows[0]},'secretkey', (error, token) =>{
@@ -45,7 +46,7 @@ async login(req, res) {
         } else{
           res.status(404).json({
             status: 404,
-            msg: "invalid credential"
+            message: "invalid credential"
           })
         }
        
@@ -79,10 +80,11 @@ async register(req, res) {
               data: newUser.rows[0],
             })
           })
-}).catch( error => {
+})
+.catch( error => {
   console.log(error);
   res.status(500).json({
-      msg: "an error has occured please make sure u insert valid contents"
+      msg: "email arleady exists"
   })
 })
 }

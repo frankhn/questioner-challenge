@@ -39,7 +39,7 @@ const confirmQuestion    = (questionId) =>{
   })
  const  questionSchema= Joi.object({
       title: Joi.string().min(5).max(15),
-      bodyy: Joi.string().min(5).max(30),
+      body: Joi.string().min(5).max(30),
   })
  const loginSchema= {
       email: Joi.string().email().required(),

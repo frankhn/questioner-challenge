@@ -25,7 +25,7 @@ class InitializeDb {
     lastname VARCHAR(30) NOT NULL,
     othername VARCHAR(30),
     email VARCHAR(50) NOT NULL UNIQUE,
-    username VARCHAR(30) NOT NULL UNIQUE,
+    username VARCHAR(30) NOT NULL,
     phone_number VARCHAR(12) NOT NULL,
     registered TIMESTAMP DEFAULT current_timestamp,
     is_admin BOOLEAN  DEFAULT false,
@@ -67,14 +67,24 @@ class InitializeDb {
     /**
      * comments are related to questions
      */
-    this.voteTable = `
-    CREATE TABLE IF NOT EXISTS vote_table (
+    this.upvoteTable = `
+    CREATE TABLE IF NOT EXISTS upvote_table (
       id SERIAL PRIMARY KEY,
       created_on TIMESTAMP DEFAULT current_timestamp,
       user_id SERIAL REFERENCES user_table(id) ON DELETE CASCADE,
       quesion_id SERIAL REFERENCES question_table(id) ON DELETE CASCADE,
-      status BOOLEAN NOT NULL 
+      votes INTEGER DEFAULT 0 
     )`;
+
+    this.downvoteTable = `
+    CREATE TABLE IF NOT EXISTS downvote_table (
+      id SERIAL PRIMARY KEY,
+      created_on TIMESTAMP DEFAULT current_timestamp,
+      user_id SERIAL REFERENCES user_table(id) ON DELETE CASCADE,
+      quesion_id SERIAL REFERENCES question_table(id) ON DELETE CASCADE,
+      votes INTEGER DEFAULT 0
+    )`;
+
     /**
      * status can be either 1(upvote) or 0(downvote)
      */
@@ -84,7 +94,8 @@ class InitializeDb {
         id SERIAL PRIMARY KEY,
         created_on TIMESTAMP DEFAULT current_timestamp,
         user_id SERIAL REFERENCES user_table(id) ON DELETE CASCADE,
-        meetup_id SERIAL REFERENCES meetup_table(id) ON DELETE CASCADE
+        meetup_id SERIAL REFERENCES meetup_table(id) ON DELETE CASCADE,
+        status  VARCHAR(30) NOT NULL
     );
     `;
     /**
