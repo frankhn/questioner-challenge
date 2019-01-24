@@ -36,14 +36,14 @@ class meetupController {
  */
 
 async create(req, res) {
-  // const { error } = Joi.validate(req.body, meetupSchema, validationOptions);
-  // if (error) {
-  //   const errorMessage = error.details.map(d => d.message);
-  //   return res.status(400).send({
-  //       status: 400,
-  //       error: errorMessage
-  //   });
-  // }
+  const { error } = Joi.validate(req.body, meetupSchema, validationOptions);
+  if (error) {
+    const errorMessage = error.details.map(d => d.message);
+    return res.status(400).send({
+        status: 400,
+        error: errorMessage
+    });
+  }
   console.log(req.body.happening_on)
       const result = db.query(`INSERT INTO meetup_table(location,topic,happening_on,image_name)
       VALUES('${req.body.location}','${req.body.topic}','${req.body.happening_on}','${req.body.image_name}') returning *;`)
