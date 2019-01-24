@@ -118,14 +118,14 @@ class InitializeDb {
  * execute the queries to create tables if not exist
  */
   async startDb() {
-    await this.executeQuery(this.userTable);//
-    await this.executeQuery(this.meetupTable);//
-    await this.executeQuery(this.meetupTagTable);//
-    await this.executeQuery(this.questionTable);//
-    await this.executeQuery(this.meetupImagesTable);//
-    await this.executeQuery(this.rsvpTable);//
-    await this.executeQuery(this.voteTable);//
-    await this.executeQuery(this.commentTable);//
+    await this.executeQuery(this.userTable);
+    await this.executeQuery(this.meetupTable);
+    await this.executeQuery(this.meetupTagTable);
+    await this.executeQuery(this.questionTable);
+    await this.executeQuery(this.meetupImagesTable);
+    await this.executeQuery(this.rsvpTable);
+    await this.executeQuery(this.voteTable);
+    await this.executeQuery(this.commentTable);
   }
   /**
    * 
@@ -142,9 +142,6 @@ class InitializeDb {
       return error;
     } finally
     {
-      /**
-       * release the connection
-       */
       connection.release();
     }
   }
