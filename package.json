@@ -31,6 +31,7 @@
         "joi-date-extensions": "^1.2.0",
         "jsonwebtoken": "^8.4.0",
         "morgan": "^1.9.1",
+        "parse-json": "^4.0.0",
         "pg": "^7.8.0",
         "polyfill": "^0.1.0",
         "request": "^2.88.0",

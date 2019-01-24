@@ -129,6 +129,7 @@ rsvp(req, res) {
         //console.log(meetup.rows[0])
         return res.status(404).json({msg: "meetup not found"});
       } else{
+        console.log(status);
         console.log(meetup.rows[0].id)
         db.query(`INSERT INTO rsvp_table(user_id,meetup_id,status)
         VALUES('2','${meetup.rows[0].id}',${status})`)

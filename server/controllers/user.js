@@ -36,7 +36,8 @@ async login(req, res) {
       } else{
         const pass =bcrypt.compareSync(password, user.rows[0].password);
         if(pass){
-          jwt.sign({user:user.rows[0]},'secretkey', (error, token) =>{
+          console.log(user.rows[0].id)
+          jwt.sign({user:user.rows[0].id},'secretkey', (error, token) =>{
             res.status(200).json({
               status: 200,
               token: token,
