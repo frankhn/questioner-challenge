@@ -17,11 +17,34 @@ class meetupController {
  */
 
  async allMeetup(req, res) {
-  Database.executeQuery("SELECT * FROM meetup_table")
+  db.query("SELECT * FROM meetup_table")
+  .then(meetups=>{
+    //total:meetups.rowCount
+   return res.status(200).json({
+     status: 200,
+     data:meetups.rows
+    });
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+}
+
+
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+
+async upComingMeetup(req, res) {
+  db.query("SELECT * FROM meetup_table order by happening_on DESC")
     .then(meetups=>{
+      //total:meetups.rowCount
      return res.status(200).json({
-       msg: "cool",
-       total:meetups.rowCount,meetups:meetups.rows
+       status: 200,
+       data:meetups.rows
       });
     })
     .catch(err=>{
@@ -61,21 +84,30 @@ async create(req, res) {
  * @param {*true if meetup exits and deletes the meetup} res 
  */
 
+
+/**
+ * 
+ * @param {*the id for a meetup to be deleted} req 
+ * @param {*true if meetup exits and deletes the meetup} res 
+ */
+
 deleteMeetup(req, res) {
   const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((meetup)=>{
       if(meetup.rows === undefined || meetup.rows.length == 0){
-        return res.status(404).json({msg: "meetup not found"});
+        return res.status(404).json({message: "meetup not found"});
       } else{
         db.query(`DELETE FROM meetup_table where id = ${req.params.meetupId}returning *;`)
          .then (deletedMeetup => {
              return res.status(202).send({
-                 "status": 202,
-                 "success": "received and marked for deletion",
+                 "status": 200,
+                 "message": "meetup deleted",
+                 data: deletedMeetup.rows[0]
  });
  }).catch( error => {
-   res.status(500).json({
-       msg: "an error has occured"
+   res.status(400).json({
+     status: 400,
+       message: "meetup not deleted"
    })
  })
  }
@@ -89,20 +121,21 @@ deleteMeetup(req, res) {
  */
 rsvp(req, res) {
 	const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
-    confirm.then((question)=>{
-      if(question.rows === undefined || question.rows.length == 0){
+    confirm.then((meetup)=>{
+      if(meetup.rows === undefined || meetup.rows.length == 0){
         return res.status(404).json({msg: "meetup not found"});
       } else{
-        db.query(`INSERT INTO rsvp_table(user_id,meetup_id)
+        db.query(`INSERT INTO rsvp_table(user_id,meetup_id,status)
         VALUES('1','${req.params.meetupId}')returning *;`)
          .then (rsvp => {
              return res.status(201).send({
                  "status": 201,
-                 "success": "thanks for response",
+                 data: [meetup.rows[0].id, meetup.rows[0].topic],
  });
  }).catch( error => {
-   res.status(501).json({
-       msg: "server error has occured "
+   res.status(503).json({
+     status: 503,
+     message: "service unavailable "
    })
  })
  }
@@ -118,13 +151,27 @@ getsingleMeetup(req, res) {
   const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((meetup)=>{
       if(meetup.rows === undefined || meetup.rows.length == 0){
-        return res.status(404).json({msg: "meetup not found"});
+        return res.status(404).json({
+          status: 404,
+          message: "meetup not found"});
       } else{
         res.status(200).json({
-          total:meetup.rowCount,meetup:meetup.rows
+          status:200,
+         meetup:meetup.rows[0]
         })
 }
 })
+}
+async executescript(req, res) {
+  const cre =Database.executeQuery("SELECT *from meetup_table")
+    .then(meetups=>{
+     return res.status(200).json({
+       msg: "ready to go",
+      });
+    })
+    .catch(err=>{
+      console.log(err);
+    })
 }
 }
 
