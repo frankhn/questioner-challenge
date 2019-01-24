@@ -16,28 +16,7 @@ class meetupController {
  */
 
 
-async login(req, res) {
-  const confirm = db.query(`SELECT * FROM user_table where email = ${req.body.email}`);
-  confirm.then((meetup)=>{
-    if(meetup.rows === undefined || meetup.rows.length == 0){
-      return res.status(404).json({msg: "user doen't exist"});
-    } else{
-        const hashePassword = db.query(`SELECT password FROM user_table where email=${req.body.email}`)
-        console.log(hashePassword);
-        const passwordValid = bcrypt.compareSync(req.body.password, hashePassword);
-        if(passwordValid) {
-            const user_id = db.query(`SELECT id FROM user_table where email=${req.body.email}`)
-           console.log(user_id);
-            const token = jwt.sign({ id: user_id }, config.secret, {
-                expiresIn: 86400 // expires in 24 hours
-              });
-        }
-      res.status(200).json({
-        total:meetup.rowCount,meetup:meetup.rows
-      })
-}
-})
-    
+ async login(req, res) {
 }
 /**
  * 

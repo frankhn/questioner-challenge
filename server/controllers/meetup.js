@@ -54,8 +54,8 @@ async create(req, res) {
 
 deleteMeetup(req, res) {
   const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
-    confirm.then((question)=>{
-      if(question.rows === undefined || question.rows.length == 0){
+    confirm.then((meetup)=>{
+      if(meetup.rows === undefined || meetup.rows.length == 0){
         return res.status(404).json({msg: "meetup not found"});
       } else{
         db.query(`DELETE FROM meetup_table where id = ${req.params.meetupId}returning *;`)
