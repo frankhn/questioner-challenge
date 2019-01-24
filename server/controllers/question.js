@@ -1,6 +1,6 @@
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
-//import confirmMeetup from '../middleware/validations';
+import { commmentSchema, questionSchema, validationOptions } from '../middleware/validations';
 import questions from '../models/question';
 import validateQuestion from '../middleware/validations';
 import validation from '../middleware/validations';
@@ -30,6 +30,7 @@ class questionController{
               return res.status(404).json({status: 404, message: "this meetup has no questions yet!"});
             } else{
               return res.status(200).json({
+                status: 200,
                 data:newUser.rows
               });
               
@@ -37,7 +38,7 @@ class questionController{
    }).catch( error => {
      console.log(error);
      res.status(400).json({
-         msg: "bad request"
+         message: "bad request"
      })
    })
    }
@@ -51,7 +52,14 @@ class questionController{
  */
 
   create (req, res) {
-    
+    const { error } = Joi.validate(req.body, questionSchema, validationOptions);
+    if (error) {
+      const errorMessage = error.details.map(d => d.message);
+      return res.status(400).send({
+          status: 400,
+          error: errorMessage
+      });
+    }  
     const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((question)=>{
       if(question.rows === undefined || question.rows.length == 0){

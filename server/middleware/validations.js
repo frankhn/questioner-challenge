@@ -33,26 +33,26 @@ const confirmQuestion    = (questionId) =>{
  */
   const meetupSchema= Joi.object({
     location: Joi.string().min(3).max(20).required(),
-    image_name: Joi.string().required(),
+    image_name: Joi.string().required().required(),
     topic: Joi.string().min(3).max(20).required(),
-    happeningOn: Joi.date().format(['YYYY/MM/DD', 'DD-MM-YYYY']),
+    happeningOn: Joi.date().format(['YYYY/MM/DD', 'DD-MM-YYYY']).required(),
   })
  const  questionSchema= Joi.object({
-      title: Joi.string().min(5).max(15),
-      bodyy: Joi.string().min(5).max(30),
+      title: Joi.string().min(5).max(15).required(),
+      body: Joi.string().min(5).max(30).required(),
   })
  const loginSchema= {
       email: Joi.string().email().required(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
   };
  const signupSchema= Joi.object({
-      firstname: Joi.string(),
-      lastname: Joi.string(),
-      othername: Joi.string(),
-      email: Joi.string().email(),
-      phone_number: Joi.number().integer(),
-      username: Joi.string().min(5).max(12),
-      password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
+      firstname: Joi.string().required(),
+      lastname: Joi.string().required(),
+      othername: Joi.string().required(),
+      email: Joi.string().email().required(),
+      phone_number: Joi.number().integer().required(),
+      username: Joi.string().min(5).max(12).required(),
+      password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
   })
   const subscribeSchema= Joi.object({
       email: Joi.string().email().required(),

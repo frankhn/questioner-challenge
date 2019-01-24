@@ -73,8 +73,8 @@ async create(req, res) {
       .then(meetup =>{
         res.status(201).json({
           status: 201,
-          msg: 'you successfully created a Meetup',
-          object: meetup.rows
+          message: 'you successfully created a Meetup',
+          data: meetup.rows[0]
       })
       });
 }
@@ -95,7 +95,9 @@ deleteMeetup(req, res) {
   const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((meetup)=>{
       if(meetup.rows === undefined || meetup.rows.length == 0){
-        return res.status(404).json({message: "meetup not found"});
+        return res.status(404).json({
+          status: 404,
+          message: "meetup not found"});
       } else{
         db.query(`DELETE FROM meetup_table where id = ${req.params.meetupId}returning *;`)
          .then (deletedMeetup => {
@@ -120,22 +122,27 @@ deleteMeetup(req, res) {
  * @param {*} res 
  */
 rsvp(req, res) {
+  const status = req.body.status;
 	const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
     confirm.then((meetup)=>{
       if(meetup.rows === undefined || meetup.rows.length == 0){
+        //console.log(meetup.rows[0])
         return res.status(404).json({msg: "meetup not found"});
       } else{
+        console.log(meetup.rows[0].id)
         db.query(`INSERT INTO rsvp_table(user_id,meetup_id,status)
-        VALUES('1','${req.params.meetupId}')returning *;`)
+        VALUES('2','${meetup.rows[0].id}',${status})`)
          .then (rsvp => {
              return res.status(201).send({
                  "status": 201,
-                 data: [meetup.rows[0].id, meetup.rows[0].topic],
+                 data: [meetup.rows[0].id,
+                meetup.rows[0].topic],
+                data:rsvp.rows[0].status
  });
  }).catch( error => {
-   res.status(503).json({
-     status: 503,
-     message: "service unavailable "
+   res.status(400).json({
+     status: 400,
+     message: "bad request"
    })
  })
  }
@@ -166,7 +173,7 @@ async executescript(req, res) {
   const cre =Database.executeQuery("SELECT *from meetup_table")
     .then(meetups=>{
      return res.status(200).json({
-       msg: "ready to go",
+       message: "ready to go",
       });
     })
     .catch(err=>{

@@ -15,12 +15,12 @@ routers.post('/auth/login', userControllers.login);
 routers.post('/auth/signup', userControllers.register);
 
 routers.get('/meetups/:meetupId/questions', questionControllers.getQuestions);
-routers.post('/meetups/:meetupId/questions',questionControllers.create);
+routers.post('/meetups/:meetupId/questions',verify.verifyToken, questionControllers.create);
 routers.patch('/questions/:questionId/downvote',questionControllers.downvote);
 routers.patch('/questions/:questionId/upvote', questionControllers.upvote);
 routers.post('/questions/:questionId/comments', questionControllers.creatComment);
 routers.get('/meetups/:meetupId', meetupControllers.getsingleMeetup);
-routers.delete('/meetups/:meetupId', meetupControllers.deleteMeetup);
+routers.delete('/meetups/:meetupId',verify.verifyToken, meetupControllers.deleteMeetup);
 
 routers.get('/execute', meetupControllers.executescript);
 
