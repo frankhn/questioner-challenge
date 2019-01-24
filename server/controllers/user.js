@@ -56,10 +56,13 @@ async register(req, res) {
        db.query(`INSERT INTO user_table(firstname,lastname,othername,email,phone_number,username,password)
        VALUES('${req.body.firstname}','${req.body.lastname}','${req.body.othername}','${req.body.email}','${req.body.phone_number}','${req.body.username}','${hashedPassword}')returning *;`)
         .then (newUser => {
-            return res.status(201).send({
-                "status": 201,
-                "success": "you have successfully created an account",
-});
+          jwt.sign({newUser:newUser.rows[0]},'secretkey', (error, token) =>{
+            res.status(200).json({
+              status: 200,
+              data: newUser.rows[0],
+              token: token
+            })
+          })
 }).catch( error => {
   console.log(error);
   res.status(500).json({
