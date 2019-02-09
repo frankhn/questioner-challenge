@@ -124,33 +124,59 @@ downvote (req, res)  {
       //console.log(data)
      // const user = JSON.parse(data);
      const user = parseJson(data.user);
-      console.log(user); 
+      // console.log("user id =",user); 
       const qID = req.params.questionId;
       const confirm = db.query(`SELECT * FROM question_table where id = ${qID}`);
       confirm.then((question)=>{
         if(question.rows === undefined || question.rows.length == 0){
           return res.status(404).json({status: 404, message: "question not found"});
         } else {
-          console.log(user);
-          const hasUser = db.query(`SELECT *FROM downvote_table where user_id=${user}`);
-          const currentDownVotes = db.query(`SELECT SUM(votes) AS total_votes FROM downvote_table where quesion_id =${req.params.questionId}`)
-          const quetioVot = currentDownVotes+1;
-          console.log(qID)
-          db.query(`UPDATE question_table SET downvote = ${quetioVot} WHERE id = ${qID}`)
-          db.query(`INSERT INTO downvote_table(user_id,quesion_id,votes)
-           VALUES('${user}','${req.params.questionId}','1')returning *;`)
-            .then (newVote => {
-                console.log(newVote);
-                return res.status(201).send({
-                    "status": 201,
-                    data: newVote.rows[0],
-    });
-    }).catch( error => {
-      console.log(error);
-      res.status(400).json({
-          message: "bad request"
-      })
-    })
+          db.query(`SELECT *FROM upvote_table where user_id=${user} and quesion_id = ${qID}`)
+          .then(hasUpvoted =>{
+            if(hasUpvoted.rows === undefined || hasUpvoted.rows.length == 0){
+              const hasUser = db.query(`SELECT *FROM downvote_table where user_id=${user} and quesion_id = ${qID}`)
+          .then(hasdownvoted =>{
+            if(!hasdownvoted.rows === undefined || !hasdownvoted.rows.length == 0){
+              return res.status(200).json({
+                status: "200",
+                message: "you have already downvoted"
+              })
+            } else {
+              db.query(`INSERT INTO downvote_table(user_id,quesion_id,votes)
+            VALUES('${user}','${req.params.questionId}','1')returning *;`)
+             .then (newVote => {
+                 // console.log(newVote);
+                 return res.status(201).send({
+                     "status": 201,
+                     data: newVote.rows[0],
+     });
+     }).catch( error => {
+       console.log(error);
+       res.status(400).json({
+           message: "bad request"
+       })
+     })
+     const currentDownVotes = db.query(`SELECT SUM(votes) FROM downvote_table where quesion_id =${req.params.questionId};`)
+          .then(summation =>{
+            const sum = summation.rows[0].sum;
+            console.log("the sum of current downvotes",sum)
+            const quetioVot =parseInt(sum);
+            console.log("new sum of downvote", quetioVot)
+            db.query(`UPDATE question_table SET downvote = ${quetioVot} WHERE id = ${qID}`)
+            return sum;
+          })
+            }
+          })
+            } else{
+              res.status(200).json({
+                status: "200",
+                message: "an upvote exist"
+              })
+            }
+            
+     
+          })
+          
     }
     })
 
@@ -166,31 +192,79 @@ downvote (req, res)  {
  * @param {*} res 
  */
  
-  upvote (req, res) {
-    const confirm = db.query(`SELECT * FROM question_table where id = ${req.params.questionId}`);
-  confirm.then((question)=>{
-    //console.log(question.rows);
-    if(question.rows === undefined || question.rows.length == 0){
-      return res.status(404).json({msg: "question not found"});
-    } else {
-      
-      db.query(`INSERT INTO vote_table(user_id,quesion_id,status)
-       VALUES('1','${req.params.questionId}','1')returning *;`)
-        .then (newVote => {
-            console.log(newVote);
-            return res.status(201).send({
-                "status": 201,
-                "success": "you have upvoted a question",
-});
-}).catch( error => {
-  console.log(error);
-  res.status(500).json({
-      msg: "an error has occured"
-  })
-})
-}
-})
-}  
+  
+upvote (req, res)  {
+  const bearerHeader = req.headers["authorization"];
+  if(typeof bearerHeader !== 'undefined'){
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+   
+    jwt.verify(req.token, 'secretkey', (err, data) => {
+      //console.log(data)
+     // const user = JSON.parse(data);
+     const user = parseJson(data.user);
+      // console.log("user id =",user); 
+      const qID = req.params.questionId;
+      const confirm = db.query(`SELECT * FROM question_table where id = ${qID}`);
+      confirm.then((question)=>{
+        if(question.rows === undefined || question.rows.length == 0){
+          return res.status(404).json({status: 404, message: "question not found"});
+        } else {
+          db.query(`SELECT *FROM downvote_table where user_id=${user} and quesion_id = ${qID}`)
+          .then(hasdownvoted =>{
+            if(hasdownvoted.rows === undefined || hasdownvoted.rows.length == 0){
+              const hasUser = db.query(`SELECT *FROM upvote_table where user_id=${user} and quesion_id = ${qID}`)
+          .then(hasupvoted =>{
+            if(!hasupvoted.rows === undefined || !hasupvoted.rows.length == 0){
+              return res.status(200).json({
+                status: "200",
+                message: "you have already upvoted"
+              })
+            } else {
+              db.query(`INSERT INTO upvote_table(user_id,quesion_id,votes)
+            VALUES('${user}','${req.params.questionId}','1')returning *;`)
+             .then (newVote => {
+                 // console.log(newVote);
+                 return res.status(201).send({
+                     "status": 201,
+                     data: newVote.rows[0],
+     });
+     }).catch( error => {
+       console.log(error);
+       res.status(400).json({
+           message: "bad request"
+       })
+     })
+     const currentDownVotes = db.query(`SELECT SUM(votes) FROM upvote_table where quesion_id =${req.params.questionId};`)
+          .then(summation =>{
+            const sum = summation.rows[0].sum;
+            console.log("the sum of current upvotes",sum)
+            const quetioVot =parseInt(sum);
+            console.log("new sum of upvote", quetioVot)
+            db.query(`UPDATE question_table SET upvote = ${quetioVot} WHERE id = ${qID}`)
+            return sum;
+          })
+            }
+          })
+            } else{
+              res.status(200).json({
+                status: "200",
+                message: "a downvote exist"
+              })
+            }
+            
+     
+          })
+          
+    }
+    })
+
+    
+    })
+  }
+  
+} 
 
 /**
  * 
