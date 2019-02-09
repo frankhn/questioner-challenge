@@ -1,9 +1,6 @@
 import BaseJoi from 'joi';
 import Extension from 'joi-date-extensions';
 import { commmentSchema, questionSchema, validationOptions } from '../middleware/validations';
-import questions from '../models/question';
-import validateQuestion from '../middleware/validations';
-import validation from '../middleware/validations';
 import db from "../config/connection";
 import jwt from 'jsonwebtoken'
 import parseJson from 'parse-json';
