@@ -40,15 +40,11 @@ class meetupController {
 
 async upComingMeetup(req, res) {
   db.query("SELECT * FROM meetup_table order by happening_on DESC")
-    .then(meetups=>{
-      //total:meetups.rowCount
+    .then(upcomingMetups=>{
      return res.status(200).json({
        status: 200,
-       data:meetups.rows
+       data:upcomingMetups.rows
       });
-    })
-    .catch(err=>{
-      console.log(err);
     })
 }
 
