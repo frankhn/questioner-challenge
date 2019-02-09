@@ -136,7 +136,7 @@ downvote (req, res)  {
             if(hasUpvoted.rows === undefined || hasUpvoted.rows.length == 0){
               const hasUser = db.query(`SELECT *FROM downvote_table where user_id=${user} and quesion_id = ${qID}`)
           .then(hasdownvoted =>{
-            if(!hasdownvoted.rows === undefined || !hasdownvoted.rows.length == 0){
+            if(!hasdownvoted.rows.length == 0 || !hasdownvoted.rows === undefined){
               return res.status(200).json({
                 status: "200",
                 message: "you have already downvoted"
