@@ -64,6 +64,7 @@ chai.use(chaiHttp);
   describe('/POST create a meetup', () => {
       it('it should be able to create a meet up', (done) => {
           let mtp = {
+              id:"1450",
             location:"kacyiru",
             image_name:"imagename",
             topic:"topic",
@@ -157,7 +158,7 @@ chai.use(chaiHttp);
 
    describe('/Delete a meetup', () => {
       it('it should be able to delete a meetup', (done) => {
-        let meetupId= 6;
+        let meetupId= 1450;
           chai.request(server)
                 .delete(`/api/v1/meetups/${meetupId}`)
                 .end((err, res) => {
