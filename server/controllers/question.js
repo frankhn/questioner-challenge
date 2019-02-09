@@ -77,7 +77,7 @@ class questionController{
 
         const confirm = db.query(`SELECT * FROM meetup_table where id = ${req.params.meetupId}`);
         confirm.then((question)=>{
-          if(question.rows === undefined || question.rows.length == 0){
+          if(question.rows.length == 0 ||question.rows === undefined){
             return res.status(404).json({status: 404 ,message: "meetup not found"});
           } else{
             
