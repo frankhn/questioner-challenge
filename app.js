@@ -1,4 +1,5 @@
 import express from 'express';
+import http from 'http';
 const app = express();
 import morgan from 'morgan';// simplifying logging
 
@@ -23,9 +24,9 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1', meetup);
-
+app.use(express.static(__dirname + '/'));
 app.get('/', (req, res) => {
-  res.status(200).sendFile('./server/index.html', { root: __dirname });// for use on heroku as a homepage
+  res.status(200).sendFile('./UI/html/index.html', { root: __dirname });// for use on heroku as a homepage
 });
 
 app.use((req, res, next) => {

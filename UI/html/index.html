@@ -2,86 +2,36 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/style.css" media="all">
+<link rel="stylesheet" href="/UI/css/style.css" media="all">
 </head>
-<body>
+<body onload="getMeetups()">
 <div class="topnav">
 <ul class="topmenu">
   <li id="appname">Questioner</li>
-  <li><a href="signin.html" class="button"  id="sign">sign in</a></li>
+  <li><a href="/UI/html/signin.html" class="button"  id="sign">sign in</a></li>
 </ul>
 </div>
 
 <div class="container">
   <div class="presenta">
-<img src="../images/meetup.jpg" id="homepre">
+<img src="/UI/images/meetup.jpg" id="homepre">
 <div id="weltext">Welcome To Questioner</div>
 </div>
 <div class="middletitle">
   <h3>Up Coming MeetUps</h3>
 </div>
-    <div class="meetupgird">
+    <div class="meetupgird" id="meetupgird">
       <!--<div class="col-left"> -->
-      <div class="card">
+      <!-- <div class="card">
         <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
+<img src="/UI/images/meetups.jpg" id="imgs" alt="Sunday Bible study">
   <h4 class="meetup-name">Sunday Bible Study</h4>
   <h5 class="date">20 January 2019</h5>
   <p class="location">Telecom House</p>
   <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+  <p id="rdmore"><a id="rdmore" href="/UI/html/singlemeetup.html">Read More</a></p>
         </div>
-      </div>
-      <div class="card">
-        <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
-  <h4 class="meetup-name">Sunday Bible Study</h4>
-  <h5 class="date">20 January 2019</h5>
-  <p class="location">Telecom House</p>
-  <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
-  <h4 class="meetup-name">Sunday Bible Study</h4>
-  <h5 class="date">20 January 2019</h5>
-  <p class="location">Telecom House</p>
-  <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
-  <h4 class="meetup-name">Sunday Bible Study</h4>
-  <h5 class="date">20 January 2019</h5>
-  <p class="location">Telecom House</p>
-  <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
-  <h4 class="meetup-name">Sunday Bible Study</h4>
-  <h5 class="date">20 January 2019</h5>
-  <p class="location">Telecom House</p>
-  <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="meetup-content">
-<img src="../images/meetups.jpg" id="imgs" alt="Sunday Bible study">
-  <h4 class="meetup-name">Sunday Bible Study</h4>
-  <h5 class="date">20 January 2019</h5>
-  <p class="location">Telecom House</p>
-  <h5 class="time">15:00 P:M</h5>
-  <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
-        </div>
-      </div>
+      </div> -->
       </div>
       <div class="center-pagination">
   <div class="pagination">
@@ -116,5 +66,6 @@
     <p id="footer-titles">Connect With Us</p>
 </div>
 </div>
+<script src="/UI/js/index.js"></script>
 </body>
 </html>
