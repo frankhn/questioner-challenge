@@ -11,8 +11,8 @@
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.the application is built in Node js.
-This Application is built in nodejs es6
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Installation, Running and deployment for more details.
+This Application is built in nodejs with es6.
 
 
 ### Prerequisites
@@ -49,10 +49,13 @@ the server will automatically install all the needed packages in the application
 You need a testing environment like POSTMAN
 
 ```
-for getting data from the app you will have to access every single API endpoint
-like  api/v1/meetups
+For getting data from the app you will have to access every single API endpoint
+like  localhost:3000/api/v1/meetups
 ```
-```you will end up with data like this:
+```Then you'll be able to get a bunch of JSON data:
+
+See the example below: 
+
   "total": 2,
     "newUser": [
         {
@@ -78,8 +81,8 @@ like  api/v1/meetups
     ]
 }
 ```
-Whether your using ***POSTMAN*** as a testing environment or your on a browser once you server is running you can locate a 
- URL at localhost:3000 from the you can access the application.
+Whether your using ***POSTMAN*** as a testing environment or your on a browser, once your server is running you can locate a 
+ URL at localhost:3000 from there you can access the application.
 
 
 The Application uses the following URL mapping for accessing it's core functions 
@@ -114,10 +117,12 @@ you have to make sure that the endpoint is able to return the specified data as 
 You'll need to have a hosting account on you hosting provider
 i would recommend HEROKU which is the hosting i used on this app, depending on you hosting provider you'll have go under certain processes to get the application up and running 
 
+Demo:
+
 heroku: https://questioner-app-2019.herokuapp.com/
 
 
 You can read more on how to host a node js application on heroku https://devcenter.heroku.com/articles
 ## Built With
 
-* [Node js](https://
+* [Node js]
