@@ -35,7 +35,7 @@ const confirmQuestion    = (questionId) =>{
     location: Joi.string().min(3).max(20).required(),
     image_name: Joi.string().required().required(),
     topic: Joi.string().min(3).max(20).required(),
-    happening_on: Joi.date().format(['YYYY/MM/DD', 'DD-MM-YYYY']).required(),
+    happening_on: Joi.date().format(['YYYY/MM/DD', 'YYYY/M/D', 'DD-MM-YYYY']).required(),
   })
  const  questionSchema= Joi.object({
       title: Joi.string().min(5).max(15).required(),
