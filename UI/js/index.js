@@ -1,6 +1,6 @@
 
 function getMeetups(){
-    fetch('http://localhost:3000/api/v1/meetups/')
+    fetch('/api/v1/meetups/')
     .then((res) => res.json())
     .then((data) => {
         let output='';
@@ -13,7 +13,7 @@ function getMeetups(){
             <h5 class="date">${meetup.happening_on}</h5>
             <p class="location">${meetup.location}</p>
             <h5 class="time">15:00 P:M</h5>
-            <p id="rdmore"><a id="rdmore" href="singlemeetup.html">Read More</a></p>
+            <p id="rdmore"><a id="rdmore" href="UI/html/singlemeetup.html?id=${meetup.id}">Read More</a></p>
          </div>
         </div>`;
         });
