@@ -4,7 +4,7 @@
     "description": "questioner api endpoints",
     "main": "app.js",
     "scripts": {
-        "start": "babel-node  --presets env ./app.js", 
+        "start": "nodemon --exec babel-node --presets env ./app.js",
         "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require babel-register ./server/test --exit",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "showCoverage": "start coverage/lcov-report/index.html",
@@ -32,6 +32,7 @@
         "jsonwebtoken": "^8.4.0",
         "morgan": "^1.9.1",
         "parse-json": "^4.0.0",
+        "passport-local-token": "^1.0.1",
         "pg": "^7.8.0",
         "polyfill": "^0.1.0",
         "request": "^2.88.0",

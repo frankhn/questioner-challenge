@@ -26,192 +26,17 @@
 	</div>
 <!--<p>Some text about the MeetUp.  Did You know You can Comment on the meetups and create Questions as well.</p>-->
 <div class="postqform">
-		<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="Ask A Question">
-			<input type="submit" name="ask" id="postformsubmit" value="Ask Question">
+		<form method="POST" action="">
+			<input type="text" class="postforminput" name="body" placeholder="Ask A Question">
+      <input type="hidden" name="title" value="Meetup question">
+			<input type="submit" name="ask" id="postformsubmit" onclick="askq()" value="Ask Question">
 		</form>
 	</div>
-	<div class="meetupquestionssinglep">
-		<h5 id=""><u>Questions</u></h5>
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button  id="upvote" onclick="upvote()"><span id="numberupvote"> </span><span>upvote</span></button>
-	<button id="downvote" onclick="downvote()"><span id="numberdownvote"> </span><span>downvote</span></button>
-	<button id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">Comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
+	<div class="meetupquestionssinglep" id="mquest">
 
 
 
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</i></button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
-
-
-
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
-
-
-
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
-
-
-
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
-
-
-<div class="singquestioncolcent"><h4>Was the meet up venue rescheduled?</h4>
-	<button id="upvote" onclick="upvote()"><span id="numberupvote"></span><span>upvote</span></button>
-	<button  id="downvote" onclick="downvote()"><span id="numberdownvote"></span><span>downvote</span></button>
-	<button  id="comment" onclick="opencomment()">comment</button>
-<div class="commentfield" id="commentfield">
-	<form method="" action="">
-			<input type="text" class="postforminput" name="qst" placeholder="post a Comment">
-			<input type="submit" name="post" id="postformsubmit" value="Post">
-	</form>
-	<button  id="comment" onclick="closecomment()">close</button>
-	<button  id="allcomment" onclick="allcomments()">comments</button>
-</div>
-<div class="dallcomments" id="dallcomments">
-	<div>
-		<p><h5>John</h5>::the venue isn't rescheduled dude!!</p>
-	</div>
-	<div>
-		<p><h5>Mark</h5>::We only changed the Entrance but not the venue</p>
-	</div>
-</div>
-</div>
-
-
+<!-- 
  <div class="center-pagination">
   <div class="pagination">
   <a href="#">&laquo;</a>
@@ -223,7 +48,12 @@
   <a href="#">6</a>
   <a href="#">&raquo;</a>
   </div>
-</div>
+</div> -->
+
+
+
+
+
 
 	</div>
 </div>

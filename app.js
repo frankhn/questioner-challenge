@@ -14,8 +14,8 @@ app.use(bodyParser.json());
 
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');
+  res.header('Access-Control-Allow-Origin', '*');//calling a server are different
+  res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');//react runing of a port 3000 and you call node at a server 3001
   if (req.method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, PATCH');
     return res.status(200).json({});
