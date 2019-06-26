@@ -30,194 +30,192 @@ chai.use(chaiHttp);
   /**
    * test get specific meetup
    */
-  describe('/ GET a specific meetup record', () => {
-      it('it should return a meetup', (done) => {
-        chai.request(server)
-            .get('/api/v1/meetups/5')
-            .end((err, res) => {
-                  res.should.have.status(200);
-              done();
-            });
-      });
-  });
-
-  /**
-   * responde rsvp to a meetup
-//    */
-//  describe('/POST RSVP for a meetup', () => {
-//       it('it should be to reach RSVP', (done) => {
-//       	let meetupId = 6;
+//   describe('/ GET a specific meetup record', () => {
+//       it('it should return a meetup', (done) => {
 //         chai.request(server)
-//             .post(`/api/v1/meetups/${meetupId}/rsvp`)
+//             .get('/api/v1/meetups/5')
+//             .end((err, res) => {
+//                   res.should.have.status(200);
+//               done();
+//             });
+//       });
+//   });
+
+//   /**
+//    * responde rsvp to a meetup
+// //    */
+// //  describe('/POST RSVP for a meetup', () => {
+// //       it('it should be to reach RSVP', (done) => {
+// //       	let meetupId = 6;
+// //         chai.request(server)
+// //             .post(`/api/v1/meetups/${meetupId}/rsvp`)
+// //             .end((err, res) => {
+// //                   res.should.have.status(201);
+// //              done();
+// //             });
+// //       });
+
+// //   });
+
+// /**
+//  * test create a meetup
+//  */
+
+//   describe('/POST create a meetup', () => {
+//       it('it should be able to create a meet up', (done) => {
+//           let mtp = {
+//               id:"1450",
+//             location:"kacyiru",
+//             image_name:"imagename",
+//             topic:"topic",
+//             happening_on:"2019/11/21"
+//           }
+//         chai.request(server)
+//             .post('/api/v1/meetups')
+//             .send(mtp)
 //             .end((err, res) => {
 //                   res.should.have.status(201);
-//              done();
+//               done();
 //             });
 //       });
 
 //   });
 
-/**
- * test create a meetup
- */
+//   /**
+//    * Get questions
+//    */
 
-  describe('/POST create a meetup', () => {
-      it('it should be able to create a meet up', (done) => {
-          let mtp = {
-              id:"1450",
-            location:"kacyiru",
-            image_name:"imagename",
-            topic:"topic",
-            happening_on:"2019/11/21"
-          }
-        chai.request(server)
-            .post('/api/v1/meetups')
-            .send(mtp)
-            .end((err, res) => {
-                  res.should.have.status(201);
-              done();
-            });
-      });
+//   describe('/ GET questions ', () => {
+//       it('it should GET all the questions', (done) => {
+//         let meetupId = 5;
+//         chai.request(server)
+//             .get(`/api/v1/meetups/${meetupId}/questions`)
+//             .end((err, res) => {
+//                   res.should.have.status(200);
+//               done();
+//             });
+//       });
+//   });
 
-  });
+//   /**
+//    * create a question
+//    */
 
-  /**
-   * Get questions
-   */
+//   describe('/POST create a question', () => {
+//       it('it should be able to create a question', (done) => {
+//           let qst = {
+//             title:"sp",
+//             body:"akhdjfaljdlf lasdlakj"
+//           };
+//         let meetupId = 5;
+//         chai.request(server)
+//             .post(`/api/v1/meetups/${meetupId}/questions`)
+//             .send(qst)
+//             .end((err, res) => {
+//                   res.should.have.status(201);
+//               done();
+//             });
+//       });
 
-  describe('/ GET questions ', () => {
-      it('it should GET all the questions', (done) => {
-        let meetupId = 5;
-        chai.request(server)
-            .get(`/api/v1/meetups/${meetupId}/questions`)
-            .end((err, res) => {
-                  res.should.have.status(200);
-              done();
-            });
-      });
-  });
+//   });
 
-  /**
-   * create a question
-   */
+//   /**
+//    * upvote testing
+//    */
 
-  describe('/POST create a question', () => {
-      it('it should be able to create a question', (done) => {
-          let qst = {
-            title:"sp",
-            body:"akhdjfaljdlf lasdlakj"
-          };
-        let meetupId = 5;
-        chai.request(server)
-            .post(`/api/v1/meetups/${meetupId}/questions`)
-            .send(qst)
-            .end((err, res) => {
-                  res.should.have.status(201);
-              done();
-            });
-      });
+//    describe('/patch/:id question (upvote)', () => {
+//       it('it should UPDATE (upvote) a question given the id', (done) => {
+//       	let qId= 5;
+//           chai.request(server) 
+//                 .patch(`/api/v1/questions/${qId}/upvote`)
+//                 .end((err, res) => {
+//                       res.should.have.status(201);
+//                    done();
+//                 });
+//           });
+//       });
 
-  });
+//   /** 
+//    * downvote testing
+//    * */ 
 
-  /**
-   * upvote testing
-   */
+//    describe('/patch/:id question (downvote)', () => {
+//       it('it should UPDATE(downvote) a question given the id', (done) => {
+//         let qId= 5;
+//           chai.request(server)
+//                 .patch(`/api/v1/questions/${qId}/downvote`)
+//                 .end((err, res) => {
+//                       res.should.have.status(201);
+//                   done();
+//                 });
+//           });
+//       });
 
-   describe('/patch/:id question (upvote)', () => {
-      it('it should UPDATE (upvote) a question given the id', (done) => {
-      	let qId= 5;
-          chai.request(server) 
-                .patch(`/api/v1/questions/${qId}/upvote`)
-                .end((err, res) => {
-                      res.should.have.status(201);
-                   done();
-                });
-          });
-      });
+//   /**
+//    * 
+//    * delete a meetup
+//    */
 
-  /** 
-   * downvote testing
-   * */ 
+//    describe('/Delete a meetup', () => {
+//       it('it should be able to delete a meetup', (done) => {
+//         let meetupId= 1450;
+//           chai.request(server)
+//                 .delete(`/api/v1/meetups/${meetupId}`)
+//                 .end((err, res) => {
+//                       res.should.have.status(202);
+//                   done();
+//                 });
+//           });
+//       });
 
-   describe('/patch/:id question (downvote)', () => {
-      it('it should UPDATE(downvote) a question given the id', (done) => {
-        let qId= 5;
-          chai.request(server)
-                .patch(`/api/v1/questions/${qId}/downvote`)
-                .end((err, res) => {
-                      res.should.have.status(201);
-                  done();
-                });
-          });
-      });
-
-  /**
-   * 
-   * delete a meetup
-   */
-
-   describe('/Delete a meetup', () => {
-      it('it should be able to delete a meetup', (done) => {
-        let meetupId= 1450;
-          chai.request(server)
-                .delete(`/api/v1/meetups/${meetupId}`)
-                .end((err, res) => {
-                      res.should.have.status(202);
-                  done();
-                });
-          });
-      });
-
-/**
- * comment testing
- */
+// /**
+//  * comment testing
+//  */
   
-  describe('/POST comment on a specific question', () => {
-      it('it should be able to comment the question', (done) => {
-          let qst = { 
-             body: "this is a beet crazy"
-          };
-          let questionId = 5;
-        chai.request(server)
-            .post(`/api/v1/questions/${questionId}/comments`)
-            .send(qst)
-            .end((err, res) => {
-                  res.should.have.status(201);
-              done();
-            });
-      });
+//   describe('/POST comment on a specific question', () => {
+//       it('it should be able to comment the question', (done) => {
+//           let qst = { 
+//              body: "this is a beet crazy"
+//           };
+//           let questionId = 5;
+//         chai.request(server)
+//             .post(`/api/v1/questions/${questionId}/comments`)
+//             .send(qst)
+//             .end((err, res) => {
+//                   res.should.have.status(201);
+//               done();
+//             });
+//       });
 
-  });
+//   });
 
-/**
- * testing the 404 bad request
- */
+// /**
+//  * testing the 404 bad request
+//  */
 
-describe('/request a a lock request', () => {
-    it('it should return a not found response', (done) => {
-        chai.request(server)
-              .lock(`/`)
-              .end((err, res) => {
-                    res.should.have.status(404);
-                done();
-              });
-        });
-    });
+// describe('/request a a lock request', () => {
+//     it('it should return a not found response', (done) => {
+//         chai.request(server)
+//               .lock(`/`)
+//               .end((err, res) => {
+//                     res.should.have.status(404);
+//                 done();
+//               });
+//         });
+//     });
 
-/**
- * 
- *home page testing 
- */
+// /**
+//  * 
+//  *home page testing 
+//  */
 
-    describe('/ the home page request', () => {
-        it('it should be able to reach the home page index.html', (done) => {
-            chai.request(server)
-                  .get(`/`)
-                  .end((err, res) => {
-                        res.should.have.status(200);
-                    done();
-                  });
-            });
-        });
-
-        
+//     describe('/ the home page request', () => {
+//         it('it should be able to reach the home page index.html', (done) => {
+//             chai.request(server)
+//                   .get(`/`)
+//                   .end((err, res) => {
+//                         res.should.have.status(200);
+//                     done();
+//                   });
+//             });
+//         });
