@@ -1,59 +1,63 @@
 {
-    "name": "questioner",
-    "version": "1.0.0",
-    "description": "questioner api endpoints",
-    "main": "app.js",
-    "scripts": {
-        "start": "babel-node --presets env ./app.js --exec",
-        "dev": "nodemon --exec babel-node --presets env ./app.js",
-        "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require babel-register ./server/test --exit",
-        "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "showCoverage": "start coverage/lcov-report/index.html",
-        "lint": "eslint app.js"
-    },
-    "keywords": [
-        "node",
-        "restful",
-        "api"
-    ],
-    "author": "frank harerimana",
-    "license": "ISC",
-    "dependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.3",
-        "babel-preset-env": "^1.7.0",
-        "babel-register": "^6.26.0",
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.18.3",
-        "chai-http": "^4.2.0",
-        "dotenv": "^6.2.0",
-        "express": "^4.16.4",
-        "joi": "^14.3.1",
-        "joi-date-extensions": "^1.2.0",
-        "jsonwebtoken": "^8.4.0",
-        "morgan": "^1.9.1",
-        "parse-json": "^4.0.0",
-        "passport-local-token": "^1.0.1",
-        "pg": "^7.8.0",
-        "polyfill": "^0.1.0",
-        "request": "^2.88.0",
-        "uuid": "^3.3.2"
-    },
-    "devDependencies": {
-        "chai": "^4.2.0",
-        "coveralls": "^3.0.2",
-        "eslint": "^5.12.0",
-        "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jsx-a11y": "^6.1.2",
-        "istanbul": "^0.4.5",
-        "mocha": "^5.2.0",
-        "mocha-lcov-reporter": "^1.3.0",
-        "nodemon": "^1.18.9",
-        "nyc": "^13.1.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/frankhn/questioner"
-    }
+  "name": "questioner",
+  "version": "1.0.0",
+  "description": "questioner api endpoints",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node --presets env ./app.js --exec",
+    "dev": "nodemon --exec babel-node --presets env ./app.js",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require babel-register ./server/test --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "showCoverage": "start coverage/lcov-report/index.html",
+    "lint": "eslint app.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "keywords": [
+    "node",
+    "restful",
+    "api"
+  ],
+  "author": "frank harerimana",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chai-http": "^4.2.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "joi": "^14.3.1",
+    "joi-date-extensions": "^1.2.0",
+    "jsonwebtoken": "^8.4.0",
+    "morgan": "^1.9.1",
+    "parse-json": "^4.0.0",
+    "passport-local-token": "^1.0.1",
+    "pg": "^7.8.0",
+    "polyfill": "^0.1.0",
+    "request": "^2.88.0",
+    "uuid": "^3.3.2",
+    "snyk": "^1.189.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.18.9",
+    "nyc": "^13.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankhn/questioner"
+  },
+  "snyk": true
 }
